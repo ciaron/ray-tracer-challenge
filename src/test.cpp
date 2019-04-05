@@ -1,11 +1,12 @@
-#define BOOST_TEST_MODULE tuple_test
+#define BOOST_TEST_MODULE Tuple test
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
+#include "Tuple.cpp"
 
 
-
-BOOST_AUTO_TEST_CASE( free_test_function )
-/* Compare with void free_test_function() */
+BOOST_AUTO_TEST_CASE( constructor_test )
+/* Create a new Tuple */
 {
-  BOOST_TEST( true /* test assertion */ );
+  Tuple t1(1.0, 2.0, 3.0, 1.0);
+  BOOST_TEST( t1.x() == 1.0 );
 }

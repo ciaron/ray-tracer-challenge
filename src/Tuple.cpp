@@ -8,13 +8,13 @@ public:
 		zval=z;
 		wval=w;
 	}
-    float x() {return xval};
-    float y() {return yval};
-    float z() {return zval};
-    float w() {return wval};
+    float x() { return xval; }
+    float y() { return yval; }
+    float z() { return zval; }
+    float w() { return wval; }
 
     bool isPoint() { return true; }
 
-}
+};
 	
 	
