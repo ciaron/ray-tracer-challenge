@@ -1,8 +1,8 @@
 cmake_minimum_required (VERSION 2.6)
 project (RayTracer)
 #include_directories (src)
-set(SOURCES src/main.cpp)
-set(TESTSOURCES src/test.cpp)
+set(SOURCES src/main.cpp src/Tuple.cpp)
+set(TESTSOURCES src/test.cpp src/Tuple.cpp)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 

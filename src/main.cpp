@@ -1,6 +1,6 @@
 #include <iostream>
 #include <math.h>
-#include "Tuple.cpp"
+#include "Tuple.h"
 
 using namespace std;
 
