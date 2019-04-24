@@ -3,10 +3,11 @@
 
 class Tuple {
 
-  private:
+  protected:
     float xval,yval,zval,wval;
 
   public:
+    //Tuple();
     Tuple(float x, float y, float z, float w);
 
     Tuple operator +(const Tuple a);
