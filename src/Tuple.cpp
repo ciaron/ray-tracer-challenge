@@ -9,6 +9,14 @@ Tuple::Tuple(float x=0.0, float y=0.0, float z=0.0, float w=0.0) {
     wval=w;
 }
 
+Tuple Tuple::operator + (Tuple b){
+    return Tuple( this->x() + b.x(), this->y() + b.y(), this->z() + b.z(), this->w() + b.w() );
+}
+
+Tuple Tuple::operator - (Tuple b){
+    return Tuple( this->x() - b.x(), this->y() - b.y(), this->z() - b.z(), this->w() - b.w() );
+}
+
 float Tuple::x() { return xval; }
 float Tuple::y() { return yval; }
 float Tuple::z() { return zval; }

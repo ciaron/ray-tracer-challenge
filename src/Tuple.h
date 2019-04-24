@@ -9,6 +9,9 @@ class Tuple {
   public:
     Tuple(float x, float y, float z, float w);
 
+    Tuple operator + (Tuple b);
+    Tuple operator - (Tuple b);
+
     float x();
     float y();
     float z();
