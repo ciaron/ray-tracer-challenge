@@ -5,7 +5,7 @@
 
 #define EPSILON 0.00001
 
-bool equal(float a, float b) {
+inline bool equal(float a, float b) {
   if (abs(a-b) < EPSILON)
     return true;
   else

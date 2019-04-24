@@ -3,7 +3,7 @@
 
 #include "Tuple.h"
 
-Tuple point(float x, float y, float z) {
+inline Tuple point(float x, float y, float z) {
     return Tuple(x, y, z, 1.0);
 }
 

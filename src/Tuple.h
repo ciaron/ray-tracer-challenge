@@ -9,9 +9,11 @@ class Tuple {
   public:
     Tuple(float x, float y, float z, float w);
 
-    Tuple operator +(Tuple b);
+    Tuple operator +(const Tuple a);
     Tuple operator -(); // unary -
-    Tuple operator -(Tuple b);
+    Tuple operator -(const Tuple a);
+    Tuple operator *(const float d);
+    Tuple operator /(const float d);
 
     float x();
     float y();
@@ -22,6 +24,11 @@ class Tuple {
     bool isVector();
 
     bool isEqual(Tuple t);
+
+    float magnitude();
+    Tuple normalize();
+    float dot(Tuple t);
+    Tuple cross(Tuple t);
 };
 
 #endif

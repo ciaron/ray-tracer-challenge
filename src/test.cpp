@@ -3,8 +3,11 @@
 
 #include <boost/test/unit_test.hpp>
 #include "Tuple.h"
+#include "Util.h"
 #include "Point.h"
 #include "Vector.h"
+#include <cmath>
+#include <cstdlib>
 
 BOOST_AUTO_TEST_CASE( constructor_test )
 /* Create a new Tuple */
@@ -97,4 +100,62 @@ BOOST_AUTO_TEST_CASE (negating_tuples)
     // negate operator
     Tuple a(1, -2, 3, -4);
     BOOST_TEST((-a).isEqual(Tuple(-1, 2, -3, 4)));
+}
+
+// Chapter 1 - Tuples
+BOOST_AUTO_TEST_CASE (scaling_tuples)
+{
+    Tuple a(1, -2, 3, -4);
+    BOOST_TEST((a*3.5).isEqual(Tuple(3.5, -7, 10.5, -14)));
+    BOOST_TEST((a*0.5).isEqual(Tuple(0.5, -1, 1.5, -2)));
+    BOOST_TEST((a/2).isEqual(Tuple(0.5, -1, 1.5, -2)));
+
+}
+
+// Chapter 1 - Tuples
+BOOST_AUTO_TEST_CASE (tuple_magnitude)
+{
+    Tuple v1 = vector(1, 0, 0);
+    Tuple v2 = vector(0, 1, 0);
+    Tuple v3 = vector(0, 0, 1);
+    Tuple v4 = vector(1, 2, 3);
+    Tuple v5 = vector(-1, -2, -3);
+    BOOST_TEST(equal(v1.magnitude(), 1));
+    BOOST_TEST(equal(v2.magnitude(), 1));
+    BOOST_TEST(equal(v3.magnitude(), 1));
+    BOOST_TEST(equal(v4.magnitude(), sqrt(14)));
+    BOOST_TEST(equal(v5.magnitude(), sqrt(14)));
+}
+
+// Chapter 1 - Tuples
+BOOST_AUTO_TEST_CASE (tuple_normalize)
+{
+    Tuple v1 = vector(4, 0, 0);
+    Tuple v2 = vector(1, 2, 3);
+
+    BOOST_TEST(v1.normalize().isEqual(vector(1,0,0)));
+    BOOST_TEST(v2.normalize().isEqual(vector(0.26726, 0.53452, 0.80178)));
+
+    BOOST_TEST(equal(v2.normalize().magnitude(), 1));
+
+}
+
+// Chapter 1 - Tuples
+BOOST_AUTO_TEST_CASE (dot_product) // 1 means identical vectors, -1 pointing in opposite directions
+                                   // cosine of angle between unit vectors
+{
+    Tuple v1 = vector(1,2,3);
+    Tuple v2 = vector(2,3,4);
+
+    BOOST_TEST(equal(v1.dot(v2), 20));
+}
+
+// Chapter 1 - Tuples
+BOOST_AUTO_TEST_CASE (cross_product) // a new vector perpendicular to the originals. Order matters!
+{
+    Tuple v1 = vector(1,2,3);
+    Tuple v2 = vector(2,3,4);
+
+    BOOST_TEST(v1.cross(v2).isEqual(vector(-1, 2, -1)));
+    BOOST_TEST(v2.cross(v1).isEqual(vector(1, -2, 1)));
 }
