@@ -2,10 +2,11 @@
 #define TUPLE_H
 
 class Tuple {
-private:
+
+  private:
     float xval,yval,zval,wval;
-public:
-    // constructor
+
+  public:
     Tuple(float x, float y, float z, float w);
 
     float x();
@@ -14,6 +15,7 @@ public:
     float w();
 
     bool isPoint();
+    bool isVector();
 };
 
 #endif
