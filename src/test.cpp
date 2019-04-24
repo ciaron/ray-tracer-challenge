@@ -84,5 +84,17 @@ BOOST_AUTO_TEST_CASE (subtracting_tuples)
     Tuple t3 = v1 - v2;
     BOOST_TEST(t3.isEqual(result1));
     BOOST_TEST(t3.isVector());
+}
 
+// Chapter 1 - Tuples
+BOOST_AUTO_TEST_CASE (negating_tuples)
+{
+    // Subtracting a vector from the zero vector
+    Tuple zero = vector(0,0,0);
+    Tuple v = vector(1, -2, 3);
+    BOOST_TEST((zero-v).isEqual(vector(-1, 2, -3)));
+
+    // negate operator
+    Tuple a(1, -2, 3, -4);
+    BOOST_TEST((-a).isEqual(Tuple(-1, 2, -3, 4)));
 }

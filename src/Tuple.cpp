@@ -13,6 +13,10 @@ Tuple Tuple::operator + (Tuple b){
     return Tuple( this->x() + b.x(), this->y() + b.y(), this->z() + b.z(), this->w() + b.w() );
 }
 
+Tuple Tuple::operator - (){
+    return Tuple( -this->x(), -this->y(), -this->z(), -this->w());
+}
+
 Tuple Tuple::operator - (Tuple b){
     return Tuple( this->x() - b.x(), this->y() - b.y(), this->z() - b.z(), this->w() - b.w() );
 }
