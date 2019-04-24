@@ -16,6 +16,8 @@ class Tuple {
 
     bool isPoint();
     bool isVector();
+
+    bool isEqual(Tuple t);
 };
 
 #endif

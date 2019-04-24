@@ -1,8 +1,10 @@
 #define BOOST_TEST_MODULE Tuple Test
 #define BOOST_TEST_DYN_LINK
+
 #include <boost/test/unit_test.hpp>
-//#include "Tuple.h"
-#include "Util.h"
+#include "Tuple.h"
+#include "Point.h"
+#include "Vector.h"
 
 BOOST_AUTO_TEST_CASE( constructor_test )
 /* Create a new Tuple */
@@ -31,12 +33,8 @@ BOOST_AUTO_TEST_CASE( create_point_or_vector )
     Tuple t5(4.3, -4.2, 3.1, 0.0); // w=0.0, a vector
 
     BOOST_TEST(p.isPoint() == true);
-    BOOST_TEST(equal(p.x(), t4.x() ));
-    BOOST_TEST(equal(p.y(), t4.y() ));
-    BOOST_TEST(equal(p.z(), t4.z() ));
+    BOOST_TEST(p.isEqual(t4));
 
     BOOST_TEST(v.isVector() == true);
-    BOOST_TEST(equal(v.x(), t5.x() ));
-    BOOST_TEST(equal(v.y(), t5.y() ));
-    BOOST_TEST(equal(v.z(), t5.z() ));
+    BOOST_TEST(v.isEqual(t5));
 }
