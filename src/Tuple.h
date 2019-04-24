@@ -3,7 +3,7 @@
 
 class Tuple {
 
-  protected:
+private:
     float xval,yval,zval,wval;
 
   public:

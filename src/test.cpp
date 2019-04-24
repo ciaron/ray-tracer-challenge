@@ -44,6 +44,16 @@ BOOST_AUTO_TEST_CASE( create_point_or_vector )
     BOOST_TEST(v.isEqual(t5));
 }
 
+// Chapter 1 - Tuples
+BOOST_AUTO_TEST_CASE( point_derived_class )
+{
+    Point p {4, -4, 3};
+    Tuple t(4, -4, 3, 1.0);       // w=1.0, a point
+
+    BOOST_TEST(p.isPoint() == true);
+    BOOST_TEST(p.isEqual(t));
+
+}
 // Chapter 1 - Operations
 BOOST_AUTO_TEST_CASE( adding_tuples )
 {

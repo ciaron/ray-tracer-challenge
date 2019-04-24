@@ -8,11 +8,9 @@
 //
 // }
 
-Tuple::Tuple(float x=0.0, float y=0.0, float z=0.0, float w=0.0) {
-    xval=x;
-    yval=y;
-    zval=z;
-    wval=w;
+Tuple::Tuple(float x, float y, float z, float w)
+    :xval{x}, yval {y}, zval{z}, wval{w}
+{
 }
 
 Tuple Tuple::operator+(Tuple b){
