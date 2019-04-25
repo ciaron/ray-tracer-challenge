@@ -31,10 +31,12 @@ BOOST_AUTO_TEST_CASE( is_point_or_vector )
 // Chapter 1 - Tuples
 BOOST_AUTO_TEST_CASE( create_point_or_vector )
 {
-    Tuple p = point(4, -4, 3);
+    //Tuple p = point(4, -4, 3);
+    Point p {4, -4, 3};
     Tuple t4(4, -4, 3, 1.0);       // w=1.0, a point
 
-    Tuple v = vector(4, -4, 3);
+    //Tuple v = vector(4, -4, 3);
+    Vector v {4, -4, 3};
     Tuple t5(4.3, -4.2, 3.1, 0.0); // w=0.0, a vector
 
     BOOST_TEST(p.isPoint() == true);
@@ -71,12 +73,12 @@ BOOST_AUTO_TEST_CASE( adding_tuples )
 BOOST_AUTO_TEST_CASE (subtracting_tuples)
 {
 
-    Tuple p1 = point(3,2,1);
-    Tuple v1 = vector(3,2,1);
-    Tuple p2 = point(5,6,7);
-    Tuple v2 = vector(5,6,7);
-    Tuple result1 = vector(-2, -4, -6);
-    Tuple result2 = point(-2, -4, -6);
+    Point p1 = Point(3,2,1);
+    Vector v1 = Vector(3,2,1);
+    Point p2 = Point(5,6,7);
+    Vector v2 = Vector(5,6,7);
+    Vector result1 = Vector(-2, -4, -6);
+    Point result2 = Point(-2, -4, -6);
 
     // Subtracting two points
 
@@ -103,9 +105,9 @@ BOOST_AUTO_TEST_CASE (subtracting_tuples)
 BOOST_AUTO_TEST_CASE (negating_tuples)
 {
     // Subtracting a vector from the zero vector
-    Tuple zero = vector(0,0,0);
-    Tuple v = vector(1, -2, 3);
-    BOOST_TEST((zero-v).isEqual(vector(-1, 2, -3)));
+    Vector zero = Vector(0,0,0);
+    Vector v = Vector(1, -2, 3);
+    BOOST_TEST((zero-v).isEqual(Vector(-1, 2, -3)));
 
     // negate operator
     Tuple a(1, -2, 3, -4);
@@ -125,11 +127,11 @@ BOOST_AUTO_TEST_CASE (scaling_tuples)
 // Chapter 1 - Tuples
 BOOST_AUTO_TEST_CASE (tuple_magnitude)
 {
-    Tuple v1 = vector(1, 0, 0);
-    Tuple v2 = vector(0, 1, 0);
-    Tuple v3 = vector(0, 0, 1);
-    Tuple v4 = vector(1, 2, 3);
-    Tuple v5 = vector(-1, -2, -3);
+    Vector v1 = Vector(1, 0, 0);
+    Vector v2 = Vector(0, 1, 0);
+    Vector v3 = Vector(0, 0, 1);
+    Vector v4 = Vector(1, 2, 3);
+    Vector v5 = Vector(-1, -2, -3);
     BOOST_TEST(equal(v1.magnitude(), 1));
     BOOST_TEST(equal(v2.magnitude(), 1));
     BOOST_TEST(equal(v3.magnitude(), 1));
@@ -140,11 +142,11 @@ BOOST_AUTO_TEST_CASE (tuple_magnitude)
 // Chapter 1 - Tuples
 BOOST_AUTO_TEST_CASE (tuple_normalize)
 {
-    Tuple v1 = vector(4, 0, 0);
-    Tuple v2 = vector(1, 2, 3);
+    Vector v1 = Vector(4, 0, 0);
+    Vector v2 = Vector(1, 2, 3);
 
-    BOOST_TEST(v1.normalize().isEqual(vector(1,0,0)));
-    BOOST_TEST(v2.normalize().isEqual(vector(0.26726, 0.53452, 0.80178)));
+    BOOST_TEST(v1.normalize().isEqual(Vector(1,0,0)));
+    BOOST_TEST(v2.normalize().isEqual(Vector(0.26726, 0.53452, 0.80178)));
 
     BOOST_TEST(equal(v2.normalize().magnitude(), 1));
 
@@ -154,8 +156,8 @@ BOOST_AUTO_TEST_CASE (tuple_normalize)
 BOOST_AUTO_TEST_CASE (dot_product) // 1 means identical vectors, -1 pointing in opposite directions
                                    // cosine of angle between unit vectors
 {
-    Tuple v1 = vector(1,2,3);
-    Tuple v2 = vector(2,3,4);
+    Vector v1 = Vector(1,2,3);
+    Vector v2 = Vector(2,3,4);
 
     BOOST_TEST(equal(v1.dot(v2), 20));
 }
@@ -163,9 +165,9 @@ BOOST_AUTO_TEST_CASE (dot_product) // 1 means identical vectors, -1 pointing in 
 // Chapter 1 - Tuples
 BOOST_AUTO_TEST_CASE (cross_product) // a new vector perpendicular to the originals. Order matters!
 {
-    Tuple v1 = vector(1,2,3);
-    Tuple v2 = vector(2,3,4);
+    Vector v1 = Vector(1,2,3);
+    Vector v2 = Vector(2,3,4);
 
-    BOOST_TEST(v1.cross(v2).isEqual(vector(-1, 2, -1)));
-    BOOST_TEST(v2.cross(v1).isEqual(vector(1, -2, 1)));
+    BOOST_TEST(v1.cross(v2).isEqual(Vector(-1, 2, -1)));
+    BOOST_TEST(v2.cross(v1).isEqual(Vector(1, -2, 1)));
 }

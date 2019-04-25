@@ -69,7 +69,7 @@ float Tuple::dot(Tuple a) {
 }
 
 Tuple Tuple::cross(Tuple a) {
-    return vector(
+    return Vector(
             this->y() * a.z() - this->z() * a.y(),
             this->z() * a.x() - this->x() * a.z(),
             this->x() * a.y() - this->y() * a.x()

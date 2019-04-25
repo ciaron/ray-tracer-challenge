@@ -3,9 +3,9 @@
 
 #include "Tuple.h"
 
-inline Tuple point(float x, float y, float z) {
-     return Tuple(x, y, z, 1.0);
-}
+// inline Tuple point(float x, float y, float z) {
+//      return Tuple(x, y, z, 1.0);
+// }
 
 class Point : public Tuple {
 public:
