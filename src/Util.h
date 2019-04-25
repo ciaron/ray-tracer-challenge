@@ -26,4 +26,9 @@ inline Vector operator+(const Vector& v1, const Vector& v2){
   return v3;
 }
 
+// scale a vector, reverse order of arguments
+// see https://stackoverflow.com/questions/29492869/multiplication-operator-overloading
+inline Vector operator*(const float& d, const Vector& v) {
+  return v*d;
+}
 #endif

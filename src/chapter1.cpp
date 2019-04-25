@@ -18,7 +18,7 @@ struct Projectile {
 
 Projectile tick(Environment env, Projectile proj) {
     Point pos = proj.position + proj.velocity;
-    Vector velocity = proj.velocity + env.gravity + env.wind;
+    Vector velocity = {proj.velocity  + env.gravity + env.wind};
     return Projectile{pos,velocity};
 }
 

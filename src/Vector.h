@@ -17,9 +17,8 @@ public:
     return sqrt(xval*xval + yval*yval + zval*zval + wval*wval);
   }
 
-
   // scale a vector
-  Vector operator*(const float d){
+  Vector operator*(const float d) const {
     return Vector(this->x()*d,this->y()*d, this->z()*d);
   }
 };
