@@ -16,6 +16,12 @@ public:
   float magnitude(){
     return sqrt(xval*xval + yval*yval + zval*zval + wval*wval);
   }
+
+
+  // scale a vector
+  Vector operator*(const float d){
+    return Vector(this->x()*d,this->y()*d, this->z()*d);
+  }
 };
 
 #endif

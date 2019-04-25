@@ -128,6 +128,10 @@ BOOST_AUTO_TEST_CASE (scaling_tuples)
     BOOST_TEST((a*0.5).isEqual(Tuple(0.5, -1, 1.5, -2)));
     BOOST_TEST((a/2).isEqual(Tuple(0.5, -1, 1.5, -2)));
 
+    // scaling a Vector
+    Vector b(1, -2, 3);
+    BOOST_TEST((b*3.5).isEqual(Vector(3.5, -7, 10.5)));
+
 }
 
 // Chapter 1 - Tuples

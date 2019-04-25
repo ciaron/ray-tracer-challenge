@@ -25,8 +25,9 @@ Projectile tick(Environment env, Projectile proj) {
 int main() {
 
     Environment env = Environment{Vector{0,-0.1,0}, Vector{-0.01, 0, 0}};
-    Vector v {1,1,0};
-    Projectile proj = Projectile{Point{0,1,0}, v.normalize()};
+    Vector velocity {1,1,0};
+    Projectile proj = Projectile{Point{0,1,0}, velocity.normalize()};
+
 
     cout << "Projectile position: " << proj.position.x() << " " << proj.position.y() << " " << proj.position.z() << "\n";
     //cout << "Projectile velocity: " << proj.velocity.x() << " " << proj.velocity.y() << " " << proj.velocity.z() << "\n";
