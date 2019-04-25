@@ -67,6 +67,12 @@ BOOST_AUTO_TEST_CASE( adding_tuples )
     Tuple result(1,1,6,1);
 
     BOOST_TEST(c.isEqual(result));
+
+    // test the Point+Vector function in UTIL_H
+    Point a1(3, -2, 5);
+    Vector b1(-2, 3, 1);
+    Point p = a1+b1;
+    BOOST_TEST(p.isEqual(result));
 }
 
 // Chapter 1 - Tuples
@@ -149,7 +155,6 @@ BOOST_AUTO_TEST_CASE (tuple_normalize)
     BOOST_TEST(v2.normalize().isEqual(Vector(0.26726, 0.53452, 0.80178)));
 
     BOOST_TEST(equal(v2.normalize().magnitude(), 1));
-
 }
 
 // Chapter 1 - Tuples

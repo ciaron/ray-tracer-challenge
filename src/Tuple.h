@@ -16,10 +16,10 @@ protected:
     Tuple operator *(const float d);
     Tuple operator /(const float d);
 
-    float x();
-    float y();
-    float z();
-    float w();
+    float x() const;
+    float y() const;
+    float z() const;
+    float w() const;
 
     bool isPoint();
     bool isVector();

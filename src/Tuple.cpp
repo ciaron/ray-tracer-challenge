@@ -2,12 +2,6 @@
 #include "Vector.h"
 #include "Util.h"
 
-// #include <cmath>
-
-// Tuple::Tuple(){
-//
-// }
-
 Tuple::Tuple(float x, float y, float z, float w)
     :xval{x}, yval {y}, zval{z}, wval{w}
 {
@@ -33,11 +27,11 @@ Tuple Tuple::operator /(const float d) {
     return Tuple(this->x()/d, this->y()/d, this->z()/d, this->w()/d);
 }
 
-
-float Tuple::x() { return xval; }
-float Tuple::y() { return yval; }
-float Tuple::z() { return zval; }
-float Tuple::w() { return wval; }
+// const guarantees the function doesn't change anything.
+float Tuple::x() const { return xval; }
+float Tuple::y() const { return yval; }
+float Tuple::z() const { return zval; }
+float Tuple::w() const { return wval; }
 
 bool Tuple::isPoint() {
     return (equal(wval, 1.0)) ? true : false;
