@@ -5,7 +5,7 @@
 #include "Color.h"
 #include "Util.h"
 
-BOOST_AUTO_TEST_CASE( constructor_test )
+BOOST_AUTO_TEST_CASE( color_component_test )
 /* Create a new Tuple */
 {
   Color c(-0.5, 0.4, 1.7);
