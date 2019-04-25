@@ -2,7 +2,7 @@
 #include "Vector.h"
 #include "Util.h"
 
-#include <cmath>
+// #include <cmath>
 
 // Tuple::Tuple(){
 //
@@ -51,14 +51,16 @@ bool Tuple::isEqual(Tuple t) {
     return equal(xval, t.x()) && equal(yval, t.y()) && equal(zval, t.z());
 }
 
-float Tuple::magnitude(){
-    return sqrt(xval*xval + yval*yval + zval*zval + wval*wval);
-}
+// done in Vector
+// float Tuple::magnitude(){
+//     return sqrt(xval*xval + yval*yval + zval*zval + wval*wval);
+// }
 
-Tuple Tuple::normalize(){
-    float m = this->magnitude();
-    return Tuple(xval/m, yval/m, zval/m, wval/m);
-}
+// done in Vector now
+// Tuple Tuple::normalize(){
+//     float m = this->magnitude();
+//     return Tuple(xval/m, yval/m, zval/m, wval/m);
+// }
 
 float Tuple::dot(Tuple a) {
     return this->x() * a.x() +

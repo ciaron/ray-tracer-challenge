@@ -1,11 +1,24 @@
 #include <iostream>
 #include <math.h>
-#include "Tuple.h"
+#include "Point.h"
+#include "Vector.h"
 
 using namespace std;
 
-int main() {
-  Tuple t1(1.0, 2.0, 3.0, 1.0);
-  cout << t1.x() << "\n";
+struct Environment {
+    Vector gravity;
+    Vector wind;
+};
 
+struct Projectile {
+    Point p;
+    Vector v;
+};
+
+int main() {
+
+    Environment env = Environment{Vector{0,-0.1,0}, Vector{-0.01,0,0}};
+    Vector v {1,1,0};
+    Projectile proj = Projectile{Point{0,1,0}, v.normalize()};
+    cout << "Gravity: " << env.gravity.x() << " " << env.gravity.y() << " " << env.gravity.z() << "\n";
 }

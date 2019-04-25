@@ -125,7 +125,7 @@ BOOST_AUTO_TEST_CASE (scaling_tuples)
 }
 
 // Chapter 1 - Tuples
-BOOST_AUTO_TEST_CASE (tuple_magnitude)
+BOOST_AUTO_TEST_CASE (vector_magnitude)
 {
     Vector v1 = Vector(1, 0, 0);
     Vector v2 = Vector(0, 1, 0);

@@ -3,7 +3,7 @@
 
 class Tuple {
 
-private:
+protected:
     float xval,yval,zval,wval;
 
   public:
@@ -26,8 +26,8 @@ private:
 
     bool isEqual(Tuple t);
 
-    float magnitude();
-    Tuple normalize();
+    //float magnitude();  // done in Vector
+    //Tuple normalize(); // done in Vector
     float dot(Tuple t);
     Tuple cross(Tuple t);
 };
