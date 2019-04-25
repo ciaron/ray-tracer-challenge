@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE Tuple Test
+#define BOOST_TEST_MODULE Chapter1 Tests
 #define BOOST_TEST_DYN_LINK
 
 #include <boost/test/unit_test.hpp>
