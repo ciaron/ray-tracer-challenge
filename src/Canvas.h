@@ -22,6 +22,7 @@ class Canvas {
 inline std::string canvas_to_ppm(Canvas c) {
     std::string header = "P3\n" + std::to_string(c.width()) + " " + std::to_string(c.height()) + "\n255\n";
     std::string pixeldata;
+    std::string line;
 
     for (int y=0; y<c.height(); y++) {
         for (int x=0; x<c.width(); x++) {
@@ -35,12 +36,38 @@ inline std::string canvas_to_ppm(Canvas c) {
             g=g>255?255:g; g=g<0?0:g;
             b=b>255?255:b; b=b<0?0:b;
 
-            pixeldata += std::to_string(r) + " " + std::to_string(g) + " " + std::to_string(b) + " ";
-        }
-        pixeldata += "\n";
-    }
+            std::string rs = std::to_string(r);
+            std::string gs = std::to_string(g);
+            std::string bs = std::to_string(b);
 
-    return header + pixeldata;
+            if (line.length() + rs.length() < 68) {
+              line += rs + " ";
+            } else {
+              pixeldata += line + "\n";
+              line = rs + " ";
+            }
+
+            if (line.length() + gs.length() < 68) {
+              line += gs + " ";
+            } else {
+              pixeldata += line + "\n";
+              line = gs + " ";
+            }
+
+            if (line.length() + bs.length() < 68) {
+              line += bs + " ";
+            } else {
+              pixeldata += line + "\n";
+              line = bs + " ";
+            }
+
+            //std::to_string(r) + " " + std::to_string(g) + " " + std::to_string(b) + " ";
+        }
+        pixeldata += line + "\n";
+        line.clear();
+    }
+    pixeldata += line;
+    return header + pixeldata + "\n";
 }
 
 #endif

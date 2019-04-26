@@ -88,9 +88,30 @@ BOOST_AUTO_TEST_CASE( ppm_creation ) {
 
     BOOST_TEST(canvas_to_ppm(c).rfind(pixeldata, header.length()) != -1); // after the header we find pixel data
 
-    // line length test
-    string morepixeldata = R"(255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 )" "\n"
-    R"(153 255 204 153 255 204 153 255 204 153 255 204 153 )" "\n"
-    R"(255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 )" "\n"
-    R"(153 255 204 153 255 204 153 255 204 153 255 204 153 )" "\n";
+
+}
+
+BOOST_AUTO_TEST_CASE( split_ppm_lines )
+{
+
+  Canvas c(10,2);
+  Color cl(1, 0.8, 0.6);
+  for (int y=0; y<2; y++) {
+
+    for (int x=0; x<10; x++){
+      c.setPixel(x,y,cl);
+    }
+  }
+  string ppm = canvas_to_ppm(c);
+
+  // line length test
+  string morepixeldata = R"(255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 )" "\n"
+  R"(153 255 204 153 255 204 153 255 204 153 255 204 153 )" "\n"
+  R"(255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 )" "\n"
+  R"(153 255 204 153 255 204 153 255 204 153 255 204 153 )" "\n";
+
+  // check visually - no obvious Boost test here for now
+  //cout << ppm;
+
+
 }
