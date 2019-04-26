@@ -10,6 +10,7 @@ protected:
     //Tuple();
     Tuple(float x, float y, float z, float w);
 
+    bool operator ==(const Tuple a);
     Tuple operator +(const Tuple a);
     Tuple operator -(); // unary -
     Tuple operator -(const Tuple a);

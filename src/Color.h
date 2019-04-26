@@ -2,14 +2,21 @@
 #define COLOR_H
 
 #include "Tuple.h"
+#include "Util.h"
 #include <cmath>
 
 class Color : public Tuple {
+
   public:
     Color(float red, float green, float blue) :Tuple(red, green, blue, 0.0) {}
-    float red() { return this->x(); }
-    float green() { return this->y(); }
-    float blue() { return this->z(); }
+    float red()   const { return this->x(); }
+    float green() const { return this->y(); }
+    float blue()  const { return this->z(); }
+
+    // test colors for equality
+    bool operator==(const Color& b) const {
+        return ( equal(this->red(), b.red()) && equal(this->green(), b.green()) && equal(this->blue(), b.blue()));
+    }
 
     // add colors
     Color operator+(Color c){
@@ -30,7 +37,6 @@ class Color : public Tuple {
     Color operator*(Color c){
         return Color( this->red() * c.red(), this->green() * c.green(), this->blue() * c.blue() );
     }
-
 };
 
 #endif

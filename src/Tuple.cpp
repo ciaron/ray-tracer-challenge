@@ -9,6 +9,10 @@ Tuple::Tuple(float x, float y, float z, float w)
 {
 }
 
+bool Tuple::operator==(Tuple b){
+    return ( equal(this->x(), b.x()) && equal(this->y(), b.y()) && equal(this->z(), b.z()) && equal(this->w(), b.w()) );
+}
+
 Tuple Tuple::operator+(Tuple b){
     return Tuple( this->x() + b.x(), this->y() + b.y(), this->z() + b.z(), this->w() + b.w() );
 }

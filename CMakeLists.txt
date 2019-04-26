@@ -4,8 +4,8 @@ project (RayTracer)
 set(CHAPTER1_SOURCES src/chapter1.cpp src/Tuple.cpp)
 set(CHAPTER1_TESTSOURCES src/chapter1_test.cpp src/Tuple.cpp)
 
-set(CHAPTER2_SOURCES src/chapter2.cpp src/Tuple.cpp)
-set(CHAPTER2_TESTSOURCES src/chapter2_test.cpp src/Tuple.cpp)
+set(CHAPTER2_SOURCES src/chapter2.cpp src/Tuple.cpp src/Canvas.cpp)
+set(CHAPTER2_TESTSOURCES src/chapter2_test.cpp src/Tuple.cpp src/Canvas.cpp)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 

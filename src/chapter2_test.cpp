@@ -3,9 +3,12 @@
 
 #include <boost/test/unit_test.hpp>
 #include "Color.h"
+#include "Canvas.h"
 #include "Util.h"
 #include <iostream>
+#include <vector>
 
+using namespace std;
 
 BOOST_AUTO_TEST_CASE( color_component_test )
 {
@@ -38,4 +41,23 @@ BOOST_AUTO_TEST_CASE( color_operators )
     BOOST_TEST( cr2.isEqual(Color(0.2, 0.5, 0.5)));
     BOOST_TEST( cr3.isEqual(Color(0.4, 0.6, 0.8)));
     BOOST_TEST( cr4.isEqual(Color(0.9, 0.2, 0.04)));
+}
+
+BOOST_AUTO_TEST_CASE( canvas_creation )
+{
+    // check that a new canvas has the correct dimensions
+    int w{10}, h{20};
+    Canvas c(w, h);
+    BOOST_TEST(c.width() == w);
+    BOOST_TEST(c.height() == h);
+
+    // check that all pixels are black
+    std::vector<Color> black(w*h, Color(0.0,0.0,0.0));
+    BOOST_TEST(c.pixels == black);
+
+    // check that pixel at [2,3] is red
+    Color red(1.0,0.0,0.0);
+    c.setPixel(2, 3, red);
+    BOOST_TEST(c.pixelAt(2,3).isEqual(red) );
+
 }
