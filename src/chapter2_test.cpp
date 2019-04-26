@@ -2,11 +2,13 @@
 #define BOOST_TEST_DYN_LINK
 
 #include <boost/test/unit_test.hpp>
-#include "Color.h"
-#include "Canvas.h"
-#include "Util.h"
 #include <iostream>
 #include <vector>
+#include <string>
+
+#include "Util.h"
+#include "Color.h"
+#include "Canvas.h"
 
 using namespace std;
 
@@ -60,4 +62,29 @@ BOOST_AUTO_TEST_CASE( canvas_creation )
     c.setPixel(2, 3, red);
     BOOST_TEST(c.pixelAt(2,3).isEqual(red) );
 
+}
+
+BOOST_AUTO_TEST_CASE( ppm_creation ) {
+    int w{5}, h{3};
+    Canvas c(w, h);
+    string header = R"(P3)" "\n"
+                    R"(5 3)" "\n"
+                    R"(255)" "\n";
+
+    BOOST_TEST(canvas_to_ppm(c).rfind(header, 0) != -1); // canvas_to_ppm starts with header
+
+    Color c1(1.5,0,0);
+    Color c2(0,0.5,0);
+    Color c3(-0.5,0,1);
+    c.setPixel(0,0,c1);
+    c.setPixel(2,1,c2);
+    c.setPixel(4,2,c3);
+
+    string pixeldata = R"(255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 )" "\n"
+    R"(0 0 0 0 0 0 0 128 0 0 0 0 0 0 0 )" "\n"
+    R"(0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 )" "\n";
+
+    //string pixeldata = ("255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \n0 0 0 0 0 0 0 128 0 0 0 0 0 0 0 \n0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 \n");
+
+    BOOST_TEST(canvas_to_ppm(c).rfind(pixeldata, header.length()) != -1); // after the header we find pixel data
 }

@@ -2,12 +2,13 @@
 #define BOOST_TEST_DYN_LINK
 
 #include <boost/test/unit_test.hpp>
-#include "Tuple.h"
-#include "Util.h"
-#include "Point.h"
-#include "Vector.h"
 #include <cmath>
 #include <cstdlib>
+
+#include "Util.h"
+//#include "Tuple.h"
+//#include "Point.h"
+//#include "Vector.h"
 
 BOOST_AUTO_TEST_CASE( constructor_test )
 /* Create a new Tuple */

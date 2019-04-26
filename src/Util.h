@@ -1,9 +1,11 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include <cstdlib>
+#include <string>
+
 #include "Point.h"
 #include "Vector.h"
-#include <cstdlib>
 
 #define EPSILON 0.00001
 
@@ -31,4 +33,10 @@ inline Vector operator+(const Vector& v1, const Vector& v2){
 inline Vector operator*(const float& d, const Vector& v) {
   return v*d;
 }
+
+// cannot put this function here, because #include'ing Canvas.h introduces circular includes.
+// inline std::string canvas_to_ppm(Canvas c) {
+//   return "TEST";
+// }
+
 #endif
