@@ -87,4 +87,10 @@ BOOST_AUTO_TEST_CASE( ppm_creation ) {
     //string pixeldata = ("255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \n0 0 0 0 0 0 0 128 0 0 0 0 0 0 0 \n0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 \n");
 
     BOOST_TEST(canvas_to_ppm(c).rfind(pixeldata, header.length()) != -1); // after the header we find pixel data
+
+    // line length test
+    string morepixeldata = R"(255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 )" "\n"
+    R"(153 255 204 153 255 204 153 255 204 153 255 204 153 )" "\n"
+    R"(255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 )" "\n"
+    R"(153 255 204 153 255 204 153 255 204 153 255 204 153 )" "\n";
 }
