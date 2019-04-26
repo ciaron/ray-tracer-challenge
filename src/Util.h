@@ -8,7 +8,7 @@
 #define EPSILON 0.00001
 
 inline bool equal(float a, float b) {
-  if (abs(a-b) < EPSILON)
+  if (fabs(a-b) < EPSILON)
     return true;
   else
     return false;

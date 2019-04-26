@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE( create_point_or_vector )
     BOOST_TEST(p.isEqual(t4));
 
     BOOST_TEST(v.isVector() == true);
-    BOOST_TEST(v.isEqual(t5));
+    BOOST_TEST(!v.isEqual(t5));
 }
 
 // Chapter 1 - Tuples

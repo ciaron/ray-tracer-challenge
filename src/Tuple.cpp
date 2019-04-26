@@ -1,6 +1,8 @@
 #include "Tuple.h"
 #include "Vector.h"
 #include "Util.h"
+#include <iostream>
+#include <cstdlib>
 
 Tuple::Tuple(float x, float y, float z, float w)
     :xval{x}, yval {y}, zval{z}, wval{w}
@@ -42,7 +44,7 @@ bool Tuple::isVector() {
 }
 
 bool Tuple::isEqual(Tuple t) {
-    return equal(xval, t.x()) && equal(yval, t.y()) && equal(zval, t.z());
+    return (equal(xval, t.x()) && equal(yval, t.y()) && equal(zval, t.z()));
 }
 
 // done in Vector
