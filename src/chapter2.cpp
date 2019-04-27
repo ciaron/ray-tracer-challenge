@@ -43,22 +43,17 @@ int main() {
 
     Projectile proj = Projectile{start, velocity};
 
-    //cout << "Projectile position: " << proj.position.x() << " " << proj.position.y() << " " << proj.position.z() << "\n";
-    //cout << "Projectile velocity: " << proj.velocity.x() << " " << proj.velocity.y() << " " << proj.velocity.z() << "\n";
-
     while (proj.position.y() >= 0.0) {
-        //cout << "Projectile position: " << proj.position.x() << " " << proj.position.y() << " " << proj.position.z() << "\n";
         proj = tick(env, proj);
         int x = (int) proj.position.x();
         int y = (int) proj.position.y();
         if (y>549 || x>899 || y<0 || x<0) { // TODO: move this error checking into Canvas
-          //cout << "Halp! " << x << " " << y << endl;
-        } else {
+          }
+        else {
           c.setPixel(900-x,550-y,cl);
         }
     }
 
     string ppm = canvas_to_ppm(c);
     cout << ppm;
-
 }
