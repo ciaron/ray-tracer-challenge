@@ -112,6 +112,11 @@ BOOST_AUTO_TEST_CASE( split_ppm_lines )
 
   // check visually - no obvious Boost test here for now
   //cout << ppm;
-
+}
+BOOST_AUTO_TEST_CASE( vector_times_equals )
+{
+  Vector v{1,2,3};
+  v *= 2.0;
+  BOOST_TEST(v.isEqual(Vector{2,4,6}));
 
 }

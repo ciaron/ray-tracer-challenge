@@ -21,6 +21,15 @@ public:
   Vector operator*(const float d) const {
     return Vector(this->x()*d,this->y()*d, this->z()*d);
   }
+
+  Vector operator*=(const float d) {
+    xval *= d;
+    yval *= d;
+    zval *= d;
+    wval *= d;
+    //Vector(this->x()*d,this->y()*d, this->z()*d);
+    return *this;
+  }
 };
 
 #endif
