@@ -11,7 +11,6 @@ int Canvas::width() const { return w; }
 int Canvas::height() const { return h; }
 
 Color Canvas::pixelAt(int x, int y) const {
-    //return Color(1.0,0.0,0.0);
     return pixels[y*w + x];
 }
 
