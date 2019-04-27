@@ -46,11 +46,9 @@ int main() {
         proj = tick(env, proj);
         int x = (int) proj.position.x();
         int y = (int) proj.position.y();
-        if (y>549 || x>899 || y<0 || x<0) { // TODO: move this error checking into Canvas
-          }
-        else {
-          c.setPixel(900-x,550-y,cl);
-        }
+
+        c.setPixel(900-x,550-y,cl);
+
     }
 
     string ppm = canvas_to_ppm(c);

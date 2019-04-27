@@ -15,5 +15,10 @@ Color Canvas::pixelAt(int x, int y) const {
 }
 
 void Canvas::setPixel(int x, int y, Color c) {
-   pixels[y*w+x] = c;
+  // set pixel if x,y coordinates are valie
+  if ( y>h-1 || x>w-1 || y<0 || x<0) {
+    // pass
+  } else {
+    pixels[y*w+x] = c;
+  }
 }
