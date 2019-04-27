@@ -36,8 +36,6 @@ int main() {
     Point start{0, 1, 0};
     Vector velocity{1, 1.8, 0};
 
-    // TODO normalise vector in place
-    //velocity=velocity.normalize();
     velocity.normalize();
 
     velocity *= 11.25;
