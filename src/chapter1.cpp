@@ -26,7 +26,8 @@ int main() {
 
     Environment env = Environment{Vector{0,-0.1,0}, Vector{-0.01, 0, 0}};
     Vector velocity {1,1,0};
-    Projectile proj = Projectile{Point{0,1,0}, velocity.normalize()};
+    velocity.normalize();
+    Projectile proj = Projectile{Point{0,1,0}, velocity};
 
 
     cout << "Projectile position: " << proj.position.x() << " " << proj.position.y() << " " << proj.position.z() << "\n";

@@ -155,11 +155,13 @@ BOOST_AUTO_TEST_CASE (tuple_normalize)
 {
     Vector v1 = Vector(4, 0, 0);
     Vector v2 = Vector(1, 2, 3);
+    v1.normalize();
+    v2.normalize();
 
-    BOOST_TEST(v1.normalize().isEqual(Vector(1,0,0)));
-    BOOST_TEST(v2.normalize().isEqual(Vector(0.26726, 0.53452, 0.80178)));
+    BOOST_TEST(v1.isEqual(Vector(1,0,0)));
+    BOOST_TEST(v2.isEqual(Vector(0.26726, 0.53452, 0.80178)));
 
-    BOOST_TEST(equal(v2.normalize().magnitude(), 1));
+    BOOST_TEST(equal(v2.magnitude(), 1));
 }
 
 // Chapter 1 - Tuples

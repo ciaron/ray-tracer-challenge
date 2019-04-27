@@ -8,9 +8,14 @@ class Vector : public Tuple {
 public:
   Vector(float x, float y, float z) :Tuple(x,y,z,0.0) {}
 
-  Vector normalize() {
+  void normalize() {
     float m = this->magnitude();
-    return Vector(xval/m, yval/m, zval/m);//, wval/m);
+    xval /= m;
+    yval /= m;
+    zval /= m;
+    wval /= m;
+
+    //return Vector(xval/m, yval/m, zval/m);//, wval/m);
   }
 
   float magnitude(){

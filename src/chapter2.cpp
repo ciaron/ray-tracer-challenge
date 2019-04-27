@@ -37,7 +37,8 @@ int main() {
     Vector velocity{1, 1.8, 0};
 
     // TODO normalise vector in place
-    velocity=velocity.normalize();
+    //velocity=velocity.normalize();
+    velocity.normalize();
 
     velocity *= 11.25;
 
