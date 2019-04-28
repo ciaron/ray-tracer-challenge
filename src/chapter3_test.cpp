@@ -14,9 +14,18 @@ BOOST_AUTO_TEST_CASE( matrix_create )
 {
   Matrix m{ 4,4 }; // create a new 2x2 matrix
 
-  for (auto c=0; c<=3; ++c) {
-    m.at(0,c) = c+1;
-  }
+  // want to do this:
+  //m.row(0) = vector<float>{42,43,44,45};
+  //cout << m.at(0,1) << endl;
+
+  //for (auto c=0; c<=3; ++c) {
+  //  m.at(0,c) = c+1;
+  //}
+
+  float *r = new float[4]{1,2,3,4};
+  cout << r[0] << " " << r[1] << endl;
+  m.setRow(0, *r);
+
   for (auto c=0; c<=3; ++c) {
     m.at(1,c) = c+5.5;
   }
