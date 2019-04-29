@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE ( matrix_equality ) {
         9,8,7,6,
         5,4,3,2
     };
-
+    // TODO Why are A and B both getting valsA as values? Surely pass-by-value to constructor?
 
     Matrix A {4, 4, valsA};
     Matrix B {4, 4, valsB};
