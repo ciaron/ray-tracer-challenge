@@ -8,28 +8,18 @@ using namespace std;
 class Matrix {
 
 private:
-  int ROWS{0};
-  int COLS{0};
+  unsigned ROWS,COLS;
   float matrix[];
-  //vector<vector<float> > matrix;
 
 public:
-  //Matrix(int rows, int cols);
+  Matrix(unsigned rows, unsigned cols, float m[]);
 
+  // see https://isocpp.org/wiki/faq/operator-overloading#matrix-subscript-op
+  float& operator() (unsigned row, unsigned col);        // Subscript operators often come in pairs
+  float  operator() (unsigned row, unsigned col) const;  // Subscript operators often come in pairs
 
-  Matrix(int rows, int cols, float m[]);
-
-  int rows() const;
-  int cols() const;
-
-  inline float& at(int r, int c) {
-      return matrix[COLS*r + c];
-  }
-
-  // inline void setRow(int row, float &r) {
-  //   matrix[COLS*row] = r;  // offset pointer here TODO
-  // }
-
+  unsigned rows() const;
+  unsigned cols() const;
 };
 
 #endif
