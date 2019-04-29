@@ -46,3 +46,36 @@ BOOST_AUTO_TEST_CASE( matrix_create )
   BOOST_TEST(m3(2,2) == 1);
 
 }
+
+//BOOST_TEST_DONT_PRINT_LOG_VALUE(Matrix)
+
+BOOST_AUTO_TEST_CASE ( matrix_equality ) {
+
+    float valsA [16] = {
+        1,2,3,4,
+        5,6,7,8,
+        9,8,7,6,
+        5,4,3,2
+    };
+
+    float valsB [16] = {
+        2,2,3,4,
+        5,6,7,8,
+        9,8,7,6,
+        5,4,3,2
+    };
+
+
+    Matrix A {4, 4, valsA};
+    Matrix B {4, 4, valsB};
+
+    // BOOST_TEST requires that the data type implement the << operator.
+    // So we either need to do that, or disable logging:
+    // BOOST_TEST_DONT_PRINT_LOG_VALUE(Matrix) (at the file level)
+    cout << A(0,0) << " " << B(0,0) << endl;
+    BOOST_TEST(A==B);
+
+    // or do BOOST_CHECK instead:
+    //BOOST_CHECK(A==B);
+
+}
