@@ -12,29 +12,17 @@ using namespace std;
 
 BOOST_AUTO_TEST_CASE( matrix_create )
 {
-  Matrix m{ 4,4 }; // create a new 2x2 matrix
+  // without constexpr, vals fails to initialize using nrows*ncols
+  constexpr int nrows = 4;
+  constexpr int ncols = 4;
+  float vals[nrows * ncols] = {0, 2, 3, 4,
+                               5.5, 6.5, 7.5, 8.5,
+                               9, 10, 11, 12,
+                               13.5, 14.5, 15.5, 16.5
+                         };
 
-  // want to do this:
-  //m.row(0) = vector<float>{42,43,44,45};
-  //cout << m.at(0,1) << endl;
-
-  //for (auto c=0; c<=3; ++c) {
-  //  m.at(0,c) = c+1;
-  //}
-
-  float *r = new float[4]{1,2,3,4};
-  cout << r[0] << " " << r[1] << endl;
-  m.setRow(0, *r);
-
-  for (auto c=0; c<=3; ++c) {
-    m.at(1,c) = c+5.5;
-  }
-  for (auto c=0; c<=3; ++c) {
-    m.at(2,c) = c+9;
-  }
-  for (auto c=0; c<=3; ++c) {
-    m.at(3,c) = c+13.5;
-  }
+  Matrix m{ nrows, ncols, vals }; // create a new 2x2 matrix
+  m.at(0,0) = 1.0;
 
   BOOST_TEST(m.at(0,0) == 1);
   BOOST_TEST(m.at(0,3) == 4);

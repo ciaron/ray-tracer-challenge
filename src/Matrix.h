@@ -10,21 +10,25 @@ class Matrix {
 private:
   int ROWS{0};
   int COLS{0};
-  float *matrix;
+  float matrix[];
   //vector<vector<float> > matrix;
 
 public:
-  Matrix(int rows, int cols);
+  //Matrix(int rows, int cols);
+
+
+  Matrix(int rows, int cols, float m[]);
+
   int rows() const;
   int cols() const;
 
-  inline float& at(int r, int c) const {
+  inline float& at(int r, int c) {
       return matrix[COLS*r + c];
   }
 
-  inline void setRow(int row, float &r) {
-    matrix[COLS*row] = r;  // offset pointer here TODO
-  }
+  // inline void setRow(int row, float &r) {
+  //   matrix[COLS*row] = r;  // offset pointer here TODO
+  // }
 
 };
 
