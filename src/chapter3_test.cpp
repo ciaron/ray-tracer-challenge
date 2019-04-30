@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 
+#include "Tuple.h"
 #include "Matrix.h"
 #include "Util.h"
 
@@ -70,19 +71,74 @@ BOOST_AUTO_TEST_CASE ( matrix_equality ) {
         5,4,3,2
     };
 
+    float valsC [16] = {
+        2,3,4,5,
+        6,7,8,9,
+        8,7,6,5,
+        4,3,2,1
+    };
+
     Matrix A {4, 4};
     Matrix B {4, 4};
+    Matrix C {4, 4};
 
     A.set(valsA);
     B.set(valsB);
+    C.set(valsC);
 
     // BOOST_TEST requires that the data type implement the << operator.
     // So we either need to do that, or disable logging:
     // BOOST_TEST_DONT_PRINT_LOG_VALUE(Matrix) (at the file level)
     //cout << A(0,0) << " " << B(0,0) << endl;
     BOOST_TEST(A==B);
+    BOOST_TEST(A!=C);
 
     // or do BOOST_CHECK instead:
     //BOOST_CHECK(A==B);
+}
+BOOST_AUTO_TEST_CASE ( matrix_multiply ) {
+
+        float valsA [16] = {
+            1,2,3,4,
+            5,6,7,8,
+            9,8,7,6,
+            5,4,3,2
+        };
+
+        float valsB [16] = {
+            -2,1,2,3,
+            3,2,1,-1,
+            4,3,6,5,
+            1,2,7,8
+        };
+
+        float valsC [16] = {
+            20,22,50,48,
+            44,54,114,108,
+            40,58,110,102,
+            16,26,46,42
+        };
+
+        Matrix A {4,4}; Matrix B {4,4}; Matrix C {4,4};
+        A.set(valsA); B.set(valsB); C.set(valsC);
+
+        BOOST_TEST((A*B) == C);
+
+}
+
+BOOST_AUTO_TEST_CASE ( matrix_tuple_multiply ) {
+
+        float valsA [16] = {
+            1,2,3,4,
+            2,4,4,2,
+            8,6,4,1,
+            0,0,0,1
+        };
+        Matrix A {4,4}; A.set(valsA);
+        Tuple b(1,2,3,1);
+        Tuple c(18,24,33,1);
+
+        //BOOST_TEST((A*b) == c);
+
 
 }

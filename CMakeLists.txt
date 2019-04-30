@@ -7,8 +7,8 @@ set(CHAPTER1_TESTSOURCES src/chapter1_test.cpp src/Tuple.cpp)
 set(CHAPTER2_SOURCES src/chapter2.cpp src/Tuple.cpp src/Canvas.cpp)
 set(CHAPTER2_TESTSOURCES src/chapter2_test.cpp src/Tuple.cpp src/Canvas.cpp)
 
-set(CHAPTER3_SOURCES src/chapter3.cpp src/Matrix.cpp)
-set(CHAPTER3_TESTSOURCES src/chapter3_test.cpp src/Matrix.cpp)
+set(CHAPTER3_SOURCES src/chapter3.cpp src/Matrix.cpp src/Tuple.cpp)
+set(CHAPTER3_TESTSOURCES src/chapter3_test.cpp src/Matrix.cpp src/Tuple.cpp)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 
 find_package(Boost)

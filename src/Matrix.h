@@ -25,6 +25,8 @@ public:
   bool operator== (const Matrix& rhs) const;
   bool operator!= (const Matrix& rhs) const;
 
+  Matrix operator*(const Matrix& B);
+
   unsigned rows() const;
   unsigned cols() const;
 };

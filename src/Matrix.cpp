@@ -29,25 +29,29 @@ float Matrix::operator() (unsigned row, unsigned col) const
 
 bool Matrix::operator== (const Matrix& rhs) const
 {
-
-    // *this->matrix[row*COLS + col] == rhs(0,0);
-    //cout << this->matrix[0] << " " << rhs(0,0) << endl;
     return (equal(this->matrix[0], rhs(0,0)));
-
-    // for (auto row=0; row<ROWS; ++row){
-    //     for (auto col=0; col<COLS; ++col) {
-    //         return(
-    //             *this(0,0) == rhs(0,0);
-    //
-    //         );
-    //
-    //     }
-    // }
 }
 
 bool Matrix::operator!= (const Matrix& rhs) const
 {
     return !(*this==rhs);
+}
+
+Matrix Matrix::operator*(const Matrix& B) {
+
+    // (n,m) x (m,p) = (n,p);
+    Matrix result = Matrix{this->ROWS, B.COLS};
+
+    //Matrix A=this;
+    for (unsigned row=0; row<this->ROWS; ++row) {
+        for (unsigned col=0; col<B.COLS; ++col) {
+            result(row, col) = matrix[row*COLS+0] * B(0,col) +
+                               matrix[row*COLS+1] * B(1,col) +
+                               matrix[row*COLS+2] * B(2,col) +
+                               matrix[row*COLS+3] * B(3,col);
+        }
+    }
+    return result;
 }
 
 // this must be declared outside the class. See
