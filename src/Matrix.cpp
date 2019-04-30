@@ -55,16 +55,19 @@ Matrix Matrix::operator*(const Matrix& B) {
     return result;
 }
 
-Matrix Matrix::operator*(const Tuple& b) {
-  Matrix result = Matrix{this->ROWS, 1};
+Tuple Matrix::operator*(const Tuple& b) {
+  //Matrix result = Matrix{this->ROWS, 1};
+  Tuple result(0,0,0,0);
 
   for (unsigned row=0; row<this->ROWS; ++row) {
-    result(row,1) = matrix[row*COLS+0] * b.x() +
-                       matrix[row*COLS+1] * b.y() +
-                       matrix[row*COLS+2] * b.z() +
-                       matrix[row*COLS+3] * b.w();
+    result(row) = matrix[row*COLS+0] * b.x() +
+                  matrix[row*COLS+1] * b.y() +
+                  matrix[row*COLS+2] * b.z() +
+                  matrix[row*COLS+3] * b.w();
 
   }
+  cout << result << " " << b << endl;
+  //result.x() = this->operator()(0,0) * b.x();
   return result;
   //return Matrix{1,1};
 

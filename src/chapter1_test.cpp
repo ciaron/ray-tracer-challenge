@@ -4,6 +4,7 @@
 #include <boost/test/unit_test.hpp>
 #include <cmath>
 #include <cstdlib>
+#include <iostream>
 
 #include "Util.h"
 //#include "Tuple.h"
@@ -188,5 +189,5 @@ BOOST_AUTO_TEST_CASE (set_tuple_elements) // a new vector perpendicular to the o
 {
   Tuple t(1,2,3,4);
   t.x() = 5.0;
-  BOOST_TEST(t.x() == 5.0); 
+  BOOST_TEST(t.x() == 5.0);
 }

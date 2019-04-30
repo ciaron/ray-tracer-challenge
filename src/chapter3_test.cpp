@@ -145,12 +145,12 @@ BOOST_AUTO_TEST_CASE ( matrix_tuple_multiply ) {
         Matrix B {4,1}; B.set(valsB);
         Matrix C {4,1}; C.set(valsC);
 
-        BOOST_TEST((A*B)==C);
+        //BOOST_TEST((A*B)==C);
 
-        //Tuple b(1,2,3,1);
-        //Tuple c(18,24,33,1);
+        Tuple b(1,2,3,1);
+        Tuple c(18,24,33,1);
 
-        //BOOST_TEST((A*b) == c);
+        BOOST_TEST((A*b) == c);
 
 
 }

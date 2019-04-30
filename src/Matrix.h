@@ -2,7 +2,7 @@
 #define MATRIX_H
 
 #include "Tuple.h"
-#include<vector>
+#include <vector>
 #include <iostream>
 
 using namespace std;
@@ -29,7 +29,7 @@ public:
   //matrix-matrix multiply
   Matrix operator*(const Matrix& B);
   //matrix-tuple multiply
-  Matrix operator*(const Tuple& b);
+  Tuple operator*(const Tuple& b);
 
   //Matrix operator*(const Vector& v);
   //Matrix operator*(const Point& p);
