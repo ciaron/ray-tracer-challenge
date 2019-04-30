@@ -134,9 +134,19 @@ BOOST_AUTO_TEST_CASE ( matrix_tuple_multiply ) {
             8,6,4,1,
             0,0,0,1
         };
+        float valsB [4] = {
+            1,2,3,1
+        };
+        float valsC [4] = {
+            18,24,33,1
+        };
+
         Matrix A {4,4}; A.set(valsA);
-        Tuple b(1,2,3,1);
-        Tuple c(18,24,33,1);
+        Matrix B {4,1}; B.set(valsB);
+        Matrix C {4,1}; C.set(valsC);
+        BOOST_TEST((A*B)==C);
+        //Tuple b(1,2,3,1);
+        //Tuple c(18,24,33,1);
 
         //BOOST_TEST((A*b) == c);
 

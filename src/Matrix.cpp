@@ -1,3 +1,4 @@
+#include "Tuple.h"
 #include "Matrix.h"
 #include "Util.h"
 using namespace std;
@@ -52,6 +53,10 @@ Matrix Matrix::operator*(const Matrix& B) {
         }
     }
     return result;
+}
+
+Matrix Matrix::operator*(const Tuple& b) {
+ return Matrix{1,1};
 }
 
 // this must be declared outside the class. See

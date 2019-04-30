@@ -1,6 +1,7 @@
 #ifndef MATRIXH
 #define MATRIX_H
 
+#include "Tuple.h"
 #include<vector>
 #include <iostream>
 
@@ -25,7 +26,13 @@ public:
   bool operator== (const Matrix& rhs) const;
   bool operator!= (const Matrix& rhs) const;
 
+  //matrix-matrix multiply
   Matrix operator*(const Matrix& B);
+  //matrix-tuple multiply
+  Matrix operator*(const Tuple& b);
+
+  //Matrix operator*(const Vector& v);
+  //Matrix operator*(const Point& p);
 
   unsigned rows() const;
   unsigned cols() const;
