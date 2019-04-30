@@ -21,6 +21,10 @@ protected:
     float y() const;
     float z() const;
     float w() const;
+    float& x();
+    float& y();
+    float& z();
+    float& w();
 
     bool isPoint();
     bool isVector();

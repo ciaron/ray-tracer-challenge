@@ -56,7 +56,18 @@ Matrix Matrix::operator*(const Matrix& B) {
 }
 
 Matrix Matrix::operator*(const Tuple& b) {
- return Matrix{1,1};
+  Matrix result = Matrix{this->ROWS, 1};
+
+  for (unsigned row=0; row<this->ROWS; ++row) {
+    result(row,1) = matrix[row*COLS+0] * b.x() +
+                       matrix[row*COLS+1] * b.y() +
+                       matrix[row*COLS+2] * b.z() +
+                       matrix[row*COLS+3] * b.w();
+
+  }
+  return result;
+  //return Matrix{1,1};
+
 }
 
 // this must be declared outside the class. See

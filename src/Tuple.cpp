@@ -39,6 +39,11 @@ float Tuple::y() const { return yval; }
 float Tuple::z() const { return zval; }
 float Tuple::w() const { return wval; }
 
+float& Tuple::x() { return xval; }
+float& Tuple::y() { return yval; }
+float& Tuple::z() { return zval; }
+float& Tuple::w() { return wval; }
+
 bool Tuple::isPoint() {
     return (equal(wval, 1.0)) ? true : false;
 }

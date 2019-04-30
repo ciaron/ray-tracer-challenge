@@ -183,3 +183,10 @@ BOOST_AUTO_TEST_CASE (cross_product) // a new vector perpendicular to the origin
     BOOST_TEST(v1.cross(v2).isEqual(Vector(-1, 2, -1)));
     BOOST_TEST(v2.cross(v1).isEqual(Vector(1, -2, 1)));
 }
+
+BOOST_AUTO_TEST_CASE (set_tuple_elements) // a new vector perpendicular to the originals. Order matters!
+{
+  Tuple t(1,2,3,4);
+  t.x() = 5.0;
+  BOOST_TEST(t.x() == 5.0); 
+}
