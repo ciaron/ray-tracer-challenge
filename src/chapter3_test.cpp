@@ -21,7 +21,9 @@ BOOST_AUTO_TEST_CASE( matrix_create )
                                13.5, 14.5, 15.5, 16.5
                          };
 
-  Matrix m{ nrows, ncols, vals }; // create a new 2x2 matrix
+  Matrix m{ nrows, ncols }; // create a new 2x2 matrix
+  m.set(vals);
+
   m(0,0) = 1.0;
 
   BOOST_TEST(m(0,0) == 1);
@@ -33,14 +35,17 @@ BOOST_AUTO_TEST_CASE( matrix_create )
   BOOST_TEST(m(3,2) == 15.5);
 
   float vals2[4] = { -3, 5, 1, -2 };
-  Matrix m2{2,2,vals2};
+  Matrix m2{2,2};
+  m2.set(vals2);
+
   BOOST_TEST(m2(0,0) == -3);
   BOOST_TEST(m2(0,1) == 5);
   BOOST_TEST(m2(1,0) == 1);
   BOOST_TEST(m2(1,1) == -2);
 
   float vals3[9] = { -3, 5, 0, 1, -2, -7, 0, 1, 1 };
-  Matrix m3{3,3,vals3};
+  Matrix m3{3,3};
+  m3.set(vals3);
   BOOST_TEST(m3(0,0) == -3);
   BOOST_TEST(m3(1,1) == -2);
   BOOST_TEST(m3(2,2) == 1);
@@ -59,20 +64,22 @@ BOOST_AUTO_TEST_CASE ( matrix_equality ) {
     };
 
     float valsB [16] = {
-        2,2,3,4,
+        1,2,3,4,
         5,6,7,8,
         9,8,7,6,
         5,4,3,2
     };
-    // TODO Why are A and B both getting valsA as values? Surely pass-by-value to constructor?
 
-    Matrix A {4, 4, valsA};
-    Matrix B {4, 4, valsB};
+    Matrix A {4, 4};
+    Matrix B {4, 4};
+
+    A.set(valsA);
+    B.set(valsB);
 
     // BOOST_TEST requires that the data type implement the << operator.
     // So we either need to do that, or disable logging:
     // BOOST_TEST_DONT_PRINT_LOG_VALUE(Matrix) (at the file level)
-    cout << A(0,0) << " " << B(0,0) << endl;
+    //cout << A(0,0) << " " << B(0,0) << endl;
     BOOST_TEST(A==B);
 
     // or do BOOST_CHECK instead:

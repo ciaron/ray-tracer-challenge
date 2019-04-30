@@ -10,10 +10,11 @@ class Matrix {
 
 private:
   unsigned ROWS,COLS;
-  float matrix[];
+  float *matrix;
 
 public:
-  Matrix(unsigned rows, unsigned cols, float m[]);
+  Matrix(unsigned rows, unsigned cols);
+  void set(float *vals);
 
   // see https://isocpp.org/wiki/faq/operator-overloading#matrix-subscript-op
   float& operator() (unsigned row, unsigned col);        // Subscript operators often come in pairs

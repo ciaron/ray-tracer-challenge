@@ -2,7 +2,13 @@
 #include "Util.h"
 using namespace std;
 
-Matrix::Matrix(unsigned rows, unsigned cols, float m[]) : ROWS{rows}, COLS{cols}, matrix{*m} { }
+Matrix::Matrix(unsigned rows, unsigned cols) : ROWS{rows}, COLS{cols} {
+    matrix = new float[rows * cols];
+}
+
+void Matrix::set(float *vals) {
+    matrix = vals;
+}
 
 unsigned Matrix::rows() const { return ROWS; }
 unsigned Matrix::cols() const { return COLS; }
