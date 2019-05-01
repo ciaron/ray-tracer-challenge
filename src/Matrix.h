@@ -31,11 +31,7 @@ public:
   //matrix-tuple multiply
   Tuple operator*(const Tuple& b);
 
-  // tuple-matrix multiply
-  //Tuple operator*(const Tuple& b, const Matrix& A);
-
-  //Matrix operator*(const Vector& v);
-  //Matrix operator*(const Point& p);
+  Matrix transpose();
 
   unsigned rows() const;
   unsigned cols() const;

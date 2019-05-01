@@ -176,3 +176,38 @@ BOOST_AUTO_TEST_CASE ( identity_matrix ) {
   BOOST_TEST((t*I) == t);
 
 }
+
+BOOST_AUTO_TEST_CASE(transpose) {
+  float valsT[16] = {
+    0,9,1,0,
+    9,8,8,0,
+    3,0,5,5,
+    0,8,3,8
+  };
+  Matrix Tr{4,4}; Tr.set(valsT);
+
+  float valsA[16] = {
+    0,9,3,0,
+    9,8,0,8,
+    1,8,5,3,
+    0,0,5,8
+  };
+  Matrix A{4,4}; A.set(valsA);
+
+  Matrix T{4,4};
+  T=A.transpose();
+
+  BOOST_TEST(T==Tr);
+
+  // tranpose identity matrix
+  float valsI[16] = {
+    1,0,0,0,
+    0,1,0,0,
+    0,0,1,0,
+    0,0,0,1
+  };
+  Matrix I{4,4}; I.set(valsI);
+  T = I.transpose();
+  BOOST_TEST(T==I);
+
+}

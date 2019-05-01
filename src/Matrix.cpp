@@ -69,6 +69,18 @@ Tuple Matrix::operator*(const Tuple& b) {
   return result;
 }
 
+Matrix Matrix::transpose() {
+  Matrix T{this->rows(), this->cols()};
+
+  for (unsigned row=0; row<this->rows(); ++row) {
+    for (unsigned col=0; col<this->cols(); ++col) {
+      float v = matrix[row*COLS + col];
+      T(col, row) = v;
+    }
+  }
+  return T;
+}
+
 // this must be declared outside the class. See
 // https://stackoverflow.com/questions/10744787/operator-must-take-exactly-one-argument
 // https://docs.microsoft.com/en-us/cpp/standard-library/overloading-the-output-operator-for-your-own-classes?view=vs-2019
