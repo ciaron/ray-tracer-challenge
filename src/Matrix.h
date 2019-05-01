@@ -32,7 +32,13 @@ public:
   //matrix-tuple multiply
   Tuple operator*(const Tuple& b);
 
-  Matrix transpose();
+  Matrix transpose() const;
+  float determinant() const;
+  Matrix submatrix(unsigned row, unsigned col) const; // return a matrix with given row and column removed
+  float minor(unsigned row, unsigned col) const;
+  float cofactor(unsigned row, unsigned col) const;
+  bool isInvertible() const;
+  Matrix inverse() const;
 
   unsigned rows() const;
   unsigned cols() const;

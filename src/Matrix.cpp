@@ -70,11 +70,10 @@ Tuple Matrix::operator*(const Tuple& b) {
                   matrix[row*COLS+2] * b.z() +
                   matrix[row*COLS+3] * b.w();
   }
-  cout << result << " " << b << endl;
   return result;
 }
 
-Matrix Matrix::transpose() {
+Matrix Matrix::transpose() const {
   Matrix T{this->rows(), this->cols()};
 
   for (unsigned row=0; row<this->rows(); ++row) {
@@ -84,6 +83,70 @@ Matrix Matrix::transpose() {
     }
   }
   return T;
+}
+
+float Matrix::determinant() const {
+  float det=0.0;
+
+  // 2x2 only (ad-bc)
+  if (this->ROWS==2 && this->COLS==2) {
+    det = matrix[0]*matrix[3] - matrix[1]*matrix[2];
+  } else {
+    for (unsigned col=0; col<this->COLS; ++col) {
+      det += matrix[col] * this->cofactor(0,col);
+    }
+  }
+  return det;
+}
+
+// return a matrix with given row and column removed
+Matrix Matrix::submatrix(unsigned delrow, unsigned delcol) const{
+  Matrix S{this->rows()-1, this->cols()-1}; // size is one less than original
+  unsigned target_idx=0;
+
+  for (unsigned row=0; row<this->ROWS; ++row) {
+      for (unsigned col=0; col<this->COLS; ++col) {
+        if (col != delcol && row != delrow) {
+          S.matrix[target_idx++] = matrix[row*COLS+col];
+        }
+      }
+    }
+  return S;
+}
+
+float Matrix::minor(unsigned row, unsigned col) const {
+  Matrix m = this->submatrix(row, col);
+  return m.determinant();
+}
+
+float Matrix::cofactor(unsigned row, unsigned col) const {
+  float m=minor(row, col);
+  if (row+col % 2 == 0) {
+    return m;
+  } else {
+    return -m;
+  }
+}
+
+bool Matrix::isInvertible() const {
+  return this->determinant() == 0 ? false : true;
+}
+
+Matrix Matrix::inverse() const {
+  Matrix M2{this->ROWS, this->COLS};
+  float dm = this->determinant();
+
+  if (!this->isInvertible()) {
+    return Matrix{0,0};
+  } else {
+    for (unsigned row=0; row<this->ROWS; ++row) {
+      for (unsigned col=0; col<this->COLS; ++col) {
+        float c = this->cofactor(row, col);
+        M2(col,row) = c/dm;
+      }
+    }
+  }
+  return M2;
 }
 
 // this must be declared outside the class. See
