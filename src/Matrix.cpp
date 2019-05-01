@@ -12,6 +12,11 @@ void Matrix::set(float *vals) {
     matrix = vals;
 }
 
+void Matrix::set(std::initializer_list<float> vals){
+  std::copy(vals.begin(), vals.end(), matrix);
+}
+
+
 unsigned Matrix::rows() const { return ROWS; }
 unsigned Matrix::cols() const { return COLS; }
 

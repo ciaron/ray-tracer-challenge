@@ -16,6 +16,7 @@ private:
 public:
   Matrix(unsigned rows, unsigned cols);
   void set(float *vals);
+  void set(std::initializer_list<float>);
 
   // see https://isocpp.org/wiki/faq/operator-overloading#matrix-subscript-op
   float& operator() (unsigned row, unsigned col);        // Subscript operators often come in pairs

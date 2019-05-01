@@ -209,5 +209,14 @@ BOOST_AUTO_TEST_CASE(transpose) {
   Matrix I{4,4}; I.set(valsI);
   T = I.transpose();
   BOOST_TEST(T==I);
+}
+
+BOOST_AUTO_TEST_CASE (matrix_inversion)
+{
+  // determinant of a 2x2 Matrix
+  Matrix A{2,2};
+  A.set({1,5,-3,2});
+
+  cout << A;
 
 }
