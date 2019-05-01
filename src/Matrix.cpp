@@ -1,6 +1,7 @@
 #include "Tuple.h"
 #include "Matrix.h"
 #include "Util.h"
+
 using namespace std;
 
 Matrix::Matrix(unsigned rows, unsigned cols) : ROWS{rows}, COLS{cols} {
@@ -56,7 +57,6 @@ Matrix Matrix::operator*(const Matrix& B) {
 }
 
 Tuple Matrix::operator*(const Tuple& b) {
-  //Matrix result = Matrix{this->ROWS, 1};
   Tuple result(0,0,0,0);
 
   for (unsigned row=0; row<this->ROWS; ++row) {
@@ -64,13 +64,9 @@ Tuple Matrix::operator*(const Tuple& b) {
                   matrix[row*COLS+1] * b.y() +
                   matrix[row*COLS+2] * b.z() +
                   matrix[row*COLS+3] * b.w();
-
   }
   cout << result << " " << b << endl;
-  //result.x() = this->operator()(0,0) * b.x();
   return result;
-  //return Matrix{1,1};
-
 }
 
 // this must be declared outside the class. See
@@ -79,6 +75,19 @@ Tuple Matrix::operator*(const Tuple& b) {
 ostream& operator<<(ostream& os, const Matrix& rhs)
 {
     // simply print the matrix dimensions for now. TODO
-    os << rhs.ROWS << "x" << rhs.COLS;
+    //os << rhs.ROWS << "x" << rhs.COLS;
+    os << endl;
+    for (unsigned row=0; row<rhs.ROWS; ++row) {
+      for (unsigned col=0; col<rhs.COLS; ++col) {
+        os << rhs(row,col) << " ";
+      }
+      os << endl;
+    }
+    os << endl;
     return os;
+}
+
+Tuple operator*(const Tuple& t, const Matrix& A) {
+   //return A*t;
+   return t;
 }

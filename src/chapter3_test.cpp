@@ -151,6 +151,28 @@ BOOST_AUTO_TEST_CASE ( matrix_tuple_multiply ) {
         Tuple c(18,24,33,1);
 
         BOOST_TEST((A*b) == c);
+}
 
+BOOST_AUTO_TEST_CASE ( identity_matrix ) {
+  float valsA[16] = {
+    0,1,2,4,
+    1,2,4,8,
+    2,4,8,16,
+    4,8,16,32
+  };
+  float valsI[16] = {
+    1,0,0,0,
+    0,1,0,0,
+    0,0,1,0,
+    0,0,0,1
+  };
+  Matrix A{4,4}; A.set(valsA);
+  Matrix I{4,4}; I.set(valsI);
+
+  BOOST_TEST((A*I) == A);
+
+  Tuple t(1,2,3,4);
+  BOOST_TEST((I*t) == t);
+  BOOST_TEST((t*I) == t);
 
 }
