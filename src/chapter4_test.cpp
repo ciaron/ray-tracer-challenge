@@ -41,3 +41,7 @@ BOOST_AUTO_TEST_CASE( scaling )
     Point p1(2,3,4);
     BOOST_TEST((reflect*p1) == Point(-2,3,4));
 }
+BOOST_AUTO_TEST_CASE( rotation )
+{
+
+}
