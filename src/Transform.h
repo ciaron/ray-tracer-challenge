@@ -14,10 +14,11 @@ class Transform : public Matrix {
     Transform() : Matrix{4,4,{
       1,0,0,0,
       0,1,0,0,
-       0,0,1,0,
-       0,0,0,1 }} {  };
+      0,0,1,0,
+      0,0,0,1 }} {  };
 
     void translation(float x, float y, float z);
+    void scaling(float t, float u, float v);
 };
 
 #endif

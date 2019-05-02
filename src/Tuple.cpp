@@ -35,6 +35,7 @@ Tuple Tuple::operator /(const float d) {
     return Tuple(this->x()/d, this->y()/d, this->z()/d, this->w()/d);
 }
 
+// operator() lets us access Tuple elements by index number
 float& Tuple::operator() (unsigned idx)
 {
   switch (idx) {
