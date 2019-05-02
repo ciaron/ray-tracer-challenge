@@ -8,6 +8,12 @@ Matrix::Matrix(unsigned rows, unsigned cols) : ROWS{rows}, COLS{cols} {
     matrix = new float[rows * cols];
 }
 
+Matrix::Matrix(unsigned rows, unsigned cols, std::initializer_list<float> data)
+ : ROWS{rows}, COLS{cols}, matrix{new float[rows*cols]}
+{
+    copy(data.begin(), data.end(), matrix);
+}
+
 void Matrix::set(float *vals) {
     matrix = vals;
 }

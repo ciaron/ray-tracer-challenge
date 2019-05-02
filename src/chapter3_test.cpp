@@ -51,6 +51,9 @@ BOOST_AUTO_TEST_CASE( matrix_create )
   BOOST_TEST(m3(1,1) == -2);
   BOOST_TEST(m3(2,2) == 1);
 
+  // test data in initializer_list
+  Matrix m4(3,3,{9,8,7,6,5,4,3,2,1});
+  cout << m4;
 }
 
 //BOOST_TEST_DONT_PRINT_LOG_VALUE(Matrix)
