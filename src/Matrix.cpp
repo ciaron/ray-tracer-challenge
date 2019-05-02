@@ -130,7 +130,7 @@ float Matrix::minor(unsigned row, unsigned col) const {
 
 float Matrix::cofactor(unsigned row, unsigned col) const {
   float m=minor(row, col);
-  if (row+col % 2 == 0) {
+  if ((row+col) % 2 == 0) {
     return m;
   } else {
     return -m;
