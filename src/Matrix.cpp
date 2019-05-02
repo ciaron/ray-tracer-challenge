@@ -14,6 +14,10 @@ Matrix::Matrix(unsigned rows, unsigned cols, std::initializer_list<float> data)
     copy(data.begin(), data.end(), matrix);
 }
 
+// default constructor
+Matrix::Matrix()
+{ }
+
 void Matrix::set(float *vals) {
     matrix = vals;
 }
@@ -21,7 +25,6 @@ void Matrix::set(float *vals) {
 void Matrix::set(std::initializer_list<float> vals){
   std::copy(vals.begin(), vals.end(), matrix);
 }
-
 
 unsigned Matrix::rows() const { return ROWS; }
 unsigned Matrix::cols() const { return COLS; }

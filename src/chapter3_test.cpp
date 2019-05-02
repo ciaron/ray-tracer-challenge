@@ -373,5 +373,4 @@ BOOST_AUTO_TEST_CASE (inversion) {
 
   Matrix C = A*B;
   BOOST_TEST((C*B.inverse()) == A);
-
 }
