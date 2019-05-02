@@ -13,4 +13,7 @@ BOOST_AUTO_TEST_CASE( point_translation )
     Transform t;
     t.translation(5, -3, 2);
     BOOST_TEST((t*p) == Point(2,1,7));
+
+    Transform tInv = t.inverse();
+
 }
