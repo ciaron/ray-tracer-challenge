@@ -1,4 +1,4 @@
-#ifndef MATRIXH
+#ifndef MATRIX_H
 #define MATRIX_H
 
 #include "Tuple.h"
@@ -21,7 +21,7 @@ private:
 public:
   Matrix(unsigned rows, unsigned cols);
   Matrix(unsigned rows, unsigned cols, std::initializer_list<float> data); // constructor including initializer_list
-  
+
   void set(float *vals);
   void set(std::initializer_list<float>);
 
