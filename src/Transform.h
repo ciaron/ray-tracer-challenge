@@ -19,6 +19,9 @@ class Transform : public Matrix {
 
     void translation(float x, float y, float z);
     void scaling(float t, float u, float v);
+    void rotation_x(float radians);
+    void rotation_y(float radians);
+    void rotation_z(float radians);
 };
 
 #endif

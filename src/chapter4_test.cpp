@@ -1,7 +1,9 @@
 #define BOOST_TEST_MODULE Chapter4 Tests
 #define BOOST_TEST_DYN_LINK
+#define _USE_MATH_DEFINES
 
 #include <boost/test/unit_test.hpp>
+#include <cmath>
 #include "Point.h"
 #include "Vector.h"
 #include "Transform.h"
@@ -41,7 +43,15 @@ BOOST_AUTO_TEST_CASE( scaling )
     Point p1(2,3,4);
     BOOST_TEST((reflect*p1) == Point(-2,3,4));
 }
+
 BOOST_AUTO_TEST_CASE( rotation )
 {
+  Point p(0,1,0);
+  Transform hq;
+  Transform fq;
+  hq.rotation_x(M_PI/4);
+  fq.rotation_x(M_PI/2);
 
+  BOOST_TEST((hq*p)==Point(0,sqrt(2)/2,sqrt(2)/2));
+  BOOST_TEST((fq*p)==Point(0,0,1));
 }
