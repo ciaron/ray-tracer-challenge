@@ -117,6 +117,26 @@ BOOST_AUTO_TEST_CASE( shear6 )
   sh.shearing(0,0,0,0,0,1);
   BOOST_TEST((sh*p)==Point(2,3,7));
 }
+
 BOOST_AUTO_TEST_CASE( chaining_transformations )
 {
+  Point p(1,0,1);
+  Transform A, B, C;
+  A.rotation_x(M_PI/2);
+  B.scaling(5,5,5);
+  C.translation(10,5,7);
+
+  auto p2 = A*p;
+  BOOST_TEST(p2 == Point(1,-1,0));
+
+  auto p3 = B*p2;
+  BOOST_TEST(p3 == Point(5,-5,0));
+
+  auto p4 = C*p3;
+  BOOST_TEST(p4 == Point(15,0,7));
+
+  Transform T;
+  T=((C*B)*A);
+  //T.rotation_x(M_PI/2).scale(5,5,5).translate(10,5,7);
+  BOOST_TEST((T*p) == Point(15,0,7));
 }
