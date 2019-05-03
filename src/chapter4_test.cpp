@@ -54,4 +54,28 @@ BOOST_AUTO_TEST_CASE( rotation )
 
   BOOST_TEST((hq*p)==Point(0,sqrt(2)/2,sqrt(2)/2));
   BOOST_TEST((fq*p)==Point(0,0,1));
+
+  auto hqinv = hq.inverse();
+  BOOST_TEST((hqinv*p)== Point(0,sqrt(2)/2, -sqrt(2)/2));
+
+  Point p2(0,0,1);
+  Transform hq2;
+  Transform fq2;
+  hq2.rotation_y(M_PI/4);
+  fq2.rotation_y(M_PI/2);
+  BOOST_TEST((hq2*p2)==Point(sqrt(2)/2,0,sqrt(2)/2));
+  BOOST_TEST((fq2*p2)==Point(1,0,0));
+
+  Point p3(0,1,0);
+  Transform hq3;
+  Transform fq3;
+  hq3.rotation_z(M_PI/4);
+  fq3.rotation_z(M_PI/2);
+  BOOST_TEST((hq3*p3)==Point(-sqrt(2)/2,sqrt(2)/2, 0));
+  BOOST_TEST((fq3*p3)==Point(-1,0,0));
+
+}
+BOOST_AUTO_TEST_CASE( shear )
+{
+
 }
