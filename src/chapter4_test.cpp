@@ -75,7 +75,48 @@ BOOST_AUTO_TEST_CASE( rotation )
   BOOST_TEST((fq3*p3)==Point(-1,0,0));
 
 }
-BOOST_AUTO_TEST_CASE( shear )
+BOOST_AUTO_TEST_CASE( shear1 )
 {
-
+  Point p(2,3,4);
+  Transform sh;
+  sh.shearing(1,0,0,0,0,0);
+  BOOST_TEST((sh*p)==Point(5,3,4));
+}
+BOOST_AUTO_TEST_CASE( shear2 )
+{
+  Point p(2,3,4);
+  Transform sh;
+  sh.shearing(0,1,0,0,0,0);
+  BOOST_TEST((sh*p)==Point(6,3,4));
+}
+BOOST_AUTO_TEST_CASE( shear3 )
+{
+  Point p(2,3,4);
+  Transform sh;
+  sh.shearing(0,0,1,0,0,0);
+  BOOST_TEST((sh*p)==Point(2,5,4));
+}
+BOOST_AUTO_TEST_CASE( shear4 )
+{
+  Point p(2,3,4);
+  Transform sh;
+  sh.shearing(0,0,0,1,0,0);
+  BOOST_TEST((sh*p)==Point(2,7,4));
+}
+BOOST_AUTO_TEST_CASE( shear5 )
+{
+  Point p(2,3,4);
+  Transform sh;
+  sh.shearing(0,0,0,0,1,0);
+  BOOST_TEST((sh*p)==Point(2,3,6));
+}
+BOOST_AUTO_TEST_CASE( shear6 )
+{
+  Point p(2,3,4);
+  Transform sh;
+  sh.shearing(0,0,0,0,0,1);
+  BOOST_TEST((sh*p)==Point(2,3,7));
+}
+BOOST_AUTO_TEST_CASE( chaining_transformations )
+{
 }

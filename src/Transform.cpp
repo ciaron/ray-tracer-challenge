@@ -45,3 +45,13 @@ void Transform::rotation_z(float radians) {
   this->operator()(1,0) = sinr;
   this->operator()(1,1) = cosr;
 }
+
+void Transform::shearing(float xy, float xz, float yx, float yz, float zx, float zy) {
+  this->operator()(0,1) = xy;
+  this->operator()(0,2) = xz;
+  this->operator()(1,0) = yx;
+  this->operator()(1,2) = yz;
+  this->operator()(2,0) = zx;
+  this->operator()(2,1) = zy;
+
+}

@@ -22,6 +22,7 @@ class Transform : public Matrix {
     void rotation_x(float radians);
     void rotation_y(float radians);
     void rotation_z(float radians);
+    void shearing(float xy, float xz, float yx, float yz, float zx, float zy);
 };
 
 #endif
