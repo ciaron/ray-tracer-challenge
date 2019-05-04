@@ -53,18 +53,17 @@ bool Matrix::operator!= (const Matrix& rhs) const
     return !(*this==rhs);
 }
 
-Matrix Matrix::operator*(const Matrix& B) {
+Matrix Matrix::operator*(const Matrix& rhs) {
 
     // (n,m) x (m,p) = (n,p);
-    Matrix result = Matrix{this->ROWS, B.COLS};
+    Matrix result = Matrix{this->ROWS, rhs.COLS}; // initialise result matrix
 
-    //Matrix A=this;
     for (unsigned row=0; row<this->ROWS; ++row) {
-        for (unsigned col=0; col<B.COLS; ++col) {
-            result(row, col) = matrix[row*COLS+0] * B(0,col) +
-                               matrix[row*COLS+1] * B(1,col) +
-                               matrix[row*COLS+2] * B(2,col) +
-                               matrix[row*COLS+3] * B(3,col);
+        for (unsigned col=0; col<rhs.COLS; ++col) {
+            result(row, col) = matrix[row*COLS+0] * rhs(0,col) +
+                               matrix[row*COLS+1] * rhs(1,col) +
+                               matrix[row*COLS+2] * rhs(2,col) +
+                               matrix[row*COLS+3] * rhs(3,col);
         }
     }
     return result;
@@ -156,6 +155,10 @@ Matrix Matrix::inverse() const {
     }
   }
   return M2;
+}
+
+Matrix identity() {
+  return Matrix(4,4,{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1});
 }
 
 // this must be declared outside the class. See

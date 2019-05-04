@@ -50,9 +50,20 @@ public:
 
   unsigned rows() const;
   unsigned cols() const;
+
+  //Matrix identity();
+  // transformation matrices
+  Matrix& translation(float x, float y, float z);
+  Matrix& scaling(float t, float u, float v);
+  Matrix& rotation_x(float radians);
+  Matrix& rotation_y(float radians);
+  Matrix& rotation_z(float radians);
+  Matrix& shearing(float xy, float xz, float yx, float yz, float zx, float zy);
+
 };
 
 // non-member function
 Tuple operator*(const Tuple& t, const Matrix& A);
+Matrix identity();
 
 #endif
