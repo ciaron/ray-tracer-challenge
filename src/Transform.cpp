@@ -1,4 +1,4 @@
-#include "Transform.h"
+//#include "Transform.h"
 #include "Matrix.h"
 
 using namespace std;
@@ -6,11 +6,17 @@ using namespace std;
 
 Matrix& Matrix::translation(float x, float y, float z) {
 
-    Matrix transform=identity();
-    transform(0,3) = x;
-    transform(1,3) = y;
-    transform(2,3) = z;
-    this->matrix = this->operator*(transform).matrix;
+    // Matrix transform=identity();
+    // transform(0,3) = x;
+    // transform(1,3) = y;
+    // transform(2,3) = z;
+    // this->matrix = this->operator*(transform).matrix;
+
+    // directly setting, translation unaffected by rotation?????
+    this->operator()(0,3) = x;
+    this->operator()(1,3) = y;
+    this->operator()(2,3) = z;
+
     return *this;
 }
 
