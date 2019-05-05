@@ -2,10 +2,11 @@
 #define MATRIX_H
 
 #include "Tuple.h"
+#include "Point.h"
 #include <vector>
 #include <iostream>
 
-using namespace std;
+//using namespace std; // bad practice in header files
 
 // function "minor" conflicts with a system macro?
 #ifdef minor
@@ -36,9 +37,25 @@ public:
   bool operator!= (const Matrix& rhs) const;
 
   //matrix-matrix multiply
-  Matrix operator*(const Matrix& B);
+  Matrix operator*(const Matrix& B) const;
+
   //matrix-tuple multiply
-  Tuple operator*(const Tuple& b);
+  Tuple operator*(const Tuple& b) const;
+  // TODO: duplicated code here:
+  Point operator*(const Point& b) const;
+
+
+  // template<typename T> operator*(const T& b) {
+  //   T result(0,0,0,0);
+  //
+  //   for (unsigned row=0; row<this->ROWS; ++row) {
+  //     result(row) = matrix[row*COLS+0] * b.x() +
+  //                   matrix[row*COLS+1] * b.y() +
+  //                   matrix[row*COLS+2] * b.z() +
+  //                   matrix[row*COLS+3] * b.w();
+  //   }
+  //   return result;
+  // }
 
   Matrix transpose() const;
   float determinant() const;
@@ -64,6 +81,7 @@ public:
 
 // non-member function
 Tuple operator*(const Tuple& t, const Matrix& A);
+
 Matrix identity();
 
 #endif

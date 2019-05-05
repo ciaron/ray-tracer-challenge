@@ -53,7 +53,7 @@ bool Matrix::operator!= (const Matrix& rhs) const
     return !(*this==rhs);
 }
 
-Matrix Matrix::operator*(const Matrix& rhs) {
+Matrix Matrix::operator*(const Matrix& rhs) const {
 
     // (n,m) x (m,p) = (n,p);
     Matrix result = Matrix{this->ROWS, rhs.COLS}; // initialise result matrix
@@ -69,8 +69,21 @@ Matrix Matrix::operator*(const Matrix& rhs) {
     return result;
 }
 
-Tuple Matrix::operator*(const Tuple& b) {
+Tuple Matrix::operator*(const Tuple& b) const {
   Tuple result(0,0,0,0);
+
+  for (unsigned row=0; row<this->ROWS; ++row) {
+    result(row) = matrix[row*COLS+0] * b.x() +
+                  matrix[row*COLS+1] * b.y() +
+                  matrix[row*COLS+2] * b.z() +
+                  matrix[row*COLS+3] * b.w();
+  }
+  return result;
+}
+
+// TODO: duplicated the Matrix*Tuple code here...
+Point Matrix::operator*(const Point& b) const {
+  Point result(0,0,0);
 
   for (unsigned row=0; row<this->ROWS; ++row) {
     result(row) = matrix[row*COLS+0] * b.x() +
@@ -180,6 +193,6 @@ ostream& operator<<(ostream& os, const Matrix& rhs)
 }
 
 Tuple operator*(const Tuple& t, const Matrix& A) {
-   //return A*t;
-   return t;
+   return (A*t);
+   //return t;
 }
