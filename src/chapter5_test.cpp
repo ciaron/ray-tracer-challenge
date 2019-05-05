@@ -4,10 +4,17 @@
 
 #include <boost/test/unit_test.hpp>
 #include "Ray.h"
+#include "Point.h"
+#include "Vector.h"
 
 using namespace std;
 
 BOOST_AUTO_TEST_CASE( rays1 )
 {
-  BOOST_TEST(1==1);
+  Point origin(1,2,3);
+  Vector direction(4,5,6);
+  Ray r(origin, direction);
+
+  BOOST_TEST(r.origin() == origin);
+  BOOST_TEST(r.direction() == direction);
 }
