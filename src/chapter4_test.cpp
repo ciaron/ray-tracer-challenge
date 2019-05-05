@@ -158,26 +158,29 @@ BOOST_AUTO_TEST_CASE( chaining_transformations )
 
   Matrix T=((C*B)*A);
   // cout << "correct" << endl << T;
-  Matrix T2 = identity();
-  // cout << T2;
 
-  T2.rotation_x(M_PI/2);
-  //cout << "rotate" << endl << T2 << endl;
-  //cout << sin(M_PI/2) << " " << cos(M_PI/2);  // 1, 0
+  // Matrix T2 = identity();
+  // // cout << T2;
 
-  T2.scaling(5,5,5);
-  // cout << "scale" << endl<< T2<<endl;
-
-  T2.translation(10,5,7); // fails
-  // cout << "translate" << endl << T2 << endl;
+  // T2.rotation_x(M_PI/2);
+  // //cout << "rotate" << endl << T2 << endl;
+  // //cout << sin(M_PI/2) << " " << cos(M_PI/2);  // 1, 0
+  //
+  // T2.scaling(5,5,5);
+  // // cout << "scale" << endl<< T2<<endl;
+  //
+  // T2.translation(10,5,7); // fails
+  // // cout << "translate" << endl << T2 << endl;
 
   Matrix T3 = identity();
-  //T3.translation(10,5,7).scaling(5,5,5).rotation_x(M_PI/2); // works
-  T3.rotation_x(M_PI/2).scaling(5,5,5).translation(10,5,7);
+  T3.translation(10,5,7).scaling(5,5,5).rotation_x(M_PI/2); // works
+  // Book does rotate.scale.translate
+  // C++ does chaining in order from left to right
+  //T3.rotation_x(M_PI/2).translation(10,5,7).scaling(5,5,5);
   // cout << T3;
   //cout << (C*B)*A;
   BOOST_TEST((T*p) == Point(15,0,7));
-  BOOST_TEST((T2*p) == Point(15,0,7));
+  //BOOST_TEST((T2*p) == Point(15,0,7));
   BOOST_TEST((T3*p) == Point(15,0,7));
 
   // Matrix T4 = identity();
