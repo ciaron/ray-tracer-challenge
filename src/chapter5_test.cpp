@@ -15,6 +15,8 @@ BOOST_AUTO_TEST_CASE( rays1 )
   Vector direction(4,5,6);
   Ray r(origin, direction);
 
+  //cout << typeid(origin).name(); //Point
+
   BOOST_TEST(r.origin() == origin);
   BOOST_TEST(r.direction() == direction);
 }
