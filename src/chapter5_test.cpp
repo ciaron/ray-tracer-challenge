@@ -7,7 +7,6 @@
 #include "Ray.h"
 #include "Point.h"
 #include "Vector.h"
-//#include "Shape.h"
 #include "Sphere.h"
 #include "Intersection.h"
 
