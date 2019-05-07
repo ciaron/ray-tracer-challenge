@@ -42,17 +42,17 @@ BOOST_AUTO_TEST_CASE( sphere_intersection ) {
     Ray r3(Point(0,2,-5), Vector(0,0,1));
 
     // ray intersects at two points
-    vector<float> xs1 = r1.intersect(s);
-    BOOST_TEST(xs1[0]==4.0);
-    BOOST_TEST(xs1[1]==6.0);
+    vector<Intersection> xs1 = r1.intersect(s);
+    BOOST_TEST(xs1[0].t()==4.0);
+    BOOST_TEST(xs1[1].t()==6.0);
 
     // ray intersects at tangent
-    vector<float> xs2 = r2.intersect(s);
-    BOOST_TEST(xs2[0]==5.0);
-    BOOST_TEST(xs2[1]==5.0);
+    vector<Intersection> xs2 = r2.intersect(s);
+    BOOST_TEST(xs2[0].t()==5.0);
+    BOOST_TEST(xs2[1].t()==5.0);
 
     // ray misses sphere
-    vector<float> xs3 = r3.intersect(s);
+    vector<Intersection> xs3 = r3.intersect(s);
     BOOST_TEST(xs3.size() == 0);
 
     Sphere s2;
@@ -77,6 +77,15 @@ BOOST_AUTO_TEST_CASE( tracking_intersections ) {
     BOOST_TEST(equal(xs[1].t(), 2));
 
     // Intersect sets the object on the intersection
+    Ray r(Point(0,0,-0.5), Vector(0,0,1));
+    Sphere s2;
+    vector<Intersection> xs2 = r.intersect(s2);
+    if (xs2.size()!=0) {
+        BOOST_TEST(xs2.size() == 2);
+        BOOST_TEST(xs2[0].object().id() == s2.id());
+        BOOST_TEST(xs2[1].object().id() == s2.id());
+
+    }
 
 
 }

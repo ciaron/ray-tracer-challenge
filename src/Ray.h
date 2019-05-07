@@ -25,7 +25,7 @@ public:
   }
 
   // intersect with a Sphere
-  vector<float> intersect(const Sphere& s) const {
+  vector<Intersection> intersect(const Sphere& s) const {
 
     float t1, t2;
 
@@ -37,13 +37,17 @@ public:
     float c = sphere_to_ray.dot(sphere_to_ray) - 1.0;
     float d = b*b - 4*a*c;
 
+    vector<Intersection> xs{};
     // get intersection points, if any
     if (d < 0) {
-        return vector<float>{};
+        return xs;
     } else {
         t1 = (-b - sqrt(d)) / (2*a);
         t2 = (-b + sqrt(d)) / (2*a);
-        return vector<float> {t1,t2};
+        //return vector<Intersection> {t1,t2};
+        xs.push_back(Intersection(t1, s));
+        xs.push_back(Intersection(t2, s));
+        return xs;
     }
   }
 
