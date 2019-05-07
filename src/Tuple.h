@@ -41,8 +41,8 @@ protected:
 
     //float magnitude();  // done in Vector
     //Tuple normalize(); // done in Vector
-    float dot(Tuple t);
-    Tuple cross(Tuple t);
+    float dot(const Tuple& t) const;
+    Tuple cross(const Tuple& t) const;
 };
 
 #endif

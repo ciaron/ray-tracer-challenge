@@ -109,14 +109,14 @@ bool Tuple::isEqual(Tuple t) {
 //     return Tuple(xval/m, yval/m, zval/m, wval/m);
 // }
 
-float Tuple::dot(Tuple a) {
+float Tuple::dot(const Tuple& a) const {
     return this->x() * a.x() +
            this->y() * a.y() +
            this->z() * a.z() +
            this->w() * a.w();
 }
 
-Tuple Tuple::cross(Tuple a) {
+Tuple Tuple::cross(const Tuple& a) const {
     return Vector(
             this->y() * a.z() - this->z() * a.y(),
             this->z() * a.x() - this->x() * a.z(),
