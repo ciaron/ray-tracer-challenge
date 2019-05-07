@@ -14,7 +14,7 @@ public:
         ++count;
     }
 
-    int id() { return _id; }
+    int id() const { return _id; }
     //virtual vector<float> intersect(const Shape& s) =0;
 
 };

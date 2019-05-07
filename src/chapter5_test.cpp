@@ -54,8 +54,14 @@ BOOST_AUTO_TEST_CASE( sphere_intersection ) {
     vector<Intersection> xs3 = r3.intersect(s);
     BOOST_TEST(xs3.size() == 0);
 
-    Sphere s2;
-    cout << s.id() << " " << s2.id() << endl;
+    // Sphere s2;
+    // cout << s.id() << " " << s2.id() << endl;
+
+    // Extra test: equality of intersections
+    Intersection i1(1,s);
+    Intersection i2(1,s);
+    BOOST_TEST(i1==i2);
+
 }
 
 BOOST_AUTO_TEST_CASE( tracking_intersections ) {
@@ -85,6 +91,43 @@ BOOST_AUTO_TEST_CASE( tracking_intersections ) {
         BOOST_TEST(xs2[1].object().id() == s2.id());
 
     }
+}
 
+BOOST_AUTO_TEST_CASE ( identifying_hits_1 ) {
+    Sphere s;
+    Intersection i1(1, s);
+    Intersection i2(2, s);
+    vector<Intersection> xs {i2, i1};
 
+    Intersection i = hit(xs);
+    BOOST_TEST(i==i1);
+}
+BOOST_AUTO_TEST_CASE ( identifying_hits_2 ) {
+    Sphere s;
+    Intersection i1(-1, s);
+    Intersection i2(1, s);
+    vector<Intersection> xs {i2, i1};
+
+    Intersection i = hit(xs);
+    BOOST_TEST(i==i2);
+}
+BOOST_AUTO_TEST_CASE ( identifying_hits_3 ) {
+    Sphere s;
+    Intersection i1(-2, s);
+    Intersection i2(-1, s);
+    vector<Intersection> xs {i2, i1};
+
+    Intersection i = hit(xs);
+    BOOST_TEST(i==i);
+}
+BOOST_AUTO_TEST_CASE ( identifying_hits_4 ) {
+    Sphere s;
+    Intersection i1(5, s);
+    Intersection i2(7, s);
+    Intersection i3(-3, s);
+    Intersection i4(2, s);
+    vector<Intersection> xs {i1, i2, i3, i4};
+
+    Intersection i = hit(xs);
+    BOOST_TEST(i==i4);
 }
