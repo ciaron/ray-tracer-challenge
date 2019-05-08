@@ -93,6 +93,18 @@ Point Matrix::operator*(const Point& b) const {
   }
   return result;
 }
+// TODO: duplicated the Matrix*Tuple code here...
+Vector Matrix::operator*(const Vector& v) const {
+  Vector result(0,0,0);
+
+  for (unsigned row=0; row<this->ROWS; ++row) {
+    result(row) = matrix[row*COLS+0] * v.x() +
+                  matrix[row*COLS+1] * v.y() +
+                  matrix[row*COLS+2] * v.z() +
+                  matrix[row*COLS+3] * v.w();
+  }
+  return result;
+}
 
 Matrix Matrix::transpose() const {
   Matrix T{this->rows(), this->cols()};

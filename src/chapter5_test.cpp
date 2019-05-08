@@ -4,6 +4,7 @@
 
 #include <boost/test/unit_test.hpp>
 #include "Util.h"
+#include "Matrix.h"
 #include "Ray.h"
 #include "Point.h"
 #include "Vector.h"
@@ -130,4 +131,59 @@ BOOST_AUTO_TEST_CASE ( identifying_hits_4 ) {
 
     Intersection i = hit(xs);
     BOOST_TEST(i==i4);
+}
+
+BOOST_AUTO_TEST_CASE (translate_ray) {
+    Ray r(Point(1,2,3),Vector(0,1,0));
+    Matrix m = identity().translation(3,4,5);
+
+    // Ray::transform returns a shared_ptr to a new Ray
+    std::shared_ptr<Ray> r2 = r.transform(m);
+
+    // use ->origin() since r2 is a pointer
+    BOOST_TEST(r2->origin() == Point(4,6,8));
+    BOOST_TEST(r2->direction() == Vector(0,1,0));
+}
+
+BOOST_AUTO_TEST_CASE (scale_ray) {
+    Ray r(Point(1,2,3),Vector(0,1,0));
+    Matrix m = identity().scaling(2,3,4);
+
+    // Ray::transform returns a shared_ptr to a new Ray
+    //std::shared_ptr<Ray> r2 = r.transform(m);
+    // or, more simply:
+    auto r2 = r.transform(m);
+
+    // use ->origin() since r2 is a pointer
+    BOOST_TEST(r2->origin() == Point(2,6,12));
+    BOOST_TEST(r2->direction() == Vector(0,3,0));
+}
+
+BOOST_AUTO_TEST_CASE(sphere_transforms) {
+    Sphere s;
+    BOOST_TEST(s.get_transform() == identity());
+
+    Matrix t = identity().translation(2,3,4);
+    s.set_transform(t);
+    BOOST_TEST(s.get_transform() == t);
+}
+
+BOOST_AUTO_TEST_CASE (intersect_scaled_sphere_with_ray) {
+    Ray r(Point(0,0,-5), Vector(0,0,1));
+    Sphere s;
+
+    s.set_transform(identity().scaling(2,2,2));
+    vector<Intersection> xs = r.intersect(s);
+
+    BOOST_TEST(xs.size() == 2);
+    BOOST_TEST(equal(xs[0].t(), 3));
+    BOOST_TEST(equal(xs[1].t(), 7));
+}
+
+BOOST_AUTO_TEST_CASE (intersect_translated_sphere_with_ray) {
+    Ray r(Point(0,0,-5), Vector(0,0,1));
+    Sphere s;
+    s.set_transform(identity().translation(5,0,0));
+    auto xs = r.intersect(s);
+    BOOST_TEST(xs.size()==0);
 }

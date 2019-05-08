@@ -3,6 +3,7 @@
 
 #include "Tuple.h"
 #include "Point.h"
+#include "Vector.h"
 #include <vector>
 #include <iostream>
 
@@ -41,21 +42,11 @@ public:
 
   //matrix-tuple multiply
   Tuple operator*(const Tuple& b) const;
+
   // TODO: duplicated code here:
   Point operator*(const Point& b) const;
+  Vector operator*(const Vector& v) const;
 
-
-  // template<typename T> operator*(const T& b) {
-  //   T result(0,0,0,0);
-  //
-  //   for (unsigned row=0; row<this->ROWS; ++row) {
-  //     result(row) = matrix[row*COLS+0] * b.x() +
-  //                   matrix[row*COLS+1] * b.y() +
-  //                   matrix[row*COLS+2] * b.z() +
-  //                   matrix[row*COLS+3] * b.w();
-  //   }
-  //   return result;
-  // }
 
   Matrix transpose() const;
   float determinant() const;

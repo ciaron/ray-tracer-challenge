@@ -5,6 +5,7 @@
 #include "Vector.h"
 #include "Sphere.h"
 #include "Intersection.h"
+#include "Matrix.h"
 #include "Util.h"
 
 class Ray {
@@ -29,11 +30,15 @@ public:
 
     float t1, t2;
 
-    // calculate discriminant
-    Vector sphere_to_ray = this->origin() - Point(0,0,0); // 0,0,0 is the centre of the sphere
+    // chapter 5, get transformed ray
+    auto tr = this->transform(s.get_transform().inverse());
 
-    float a = _direction.dot(_direction);
-    float b = 2 * _direction.dot(sphere_to_ray);
+    // calculate discriminant
+    //Vector sphere_to_ray = this->origin() - Point(0,0,0); // 0,0,0 is the centre of the sphere
+    Vector sphere_to_ray = tr->origin() - Point(0,0,0); // 0,0,0 is the centre of the sphere
+
+    float a = tr->direction().dot(tr->direction());
+    float b = 2 * tr->direction().dot(sphere_to_ray);
     float c = sphere_to_ray.dot(sphere_to_ray) - 1.0;
     float d = b*b - 4*a*c;
 
@@ -51,7 +56,11 @@ public:
     }
   }
 
-  // TODO (Tracking Intersections): return vector<Intersection> {t1,Shape},{t2,Shape}
+  // apply a transformation matrix to a ray
+  std::shared_ptr<Ray> transform(const Matrix& m) const {
+      // no memory leak with shared_ptr, in contrast to returning a Ray object
+      return std::make_shared<Ray>(m*this->origin(), m*this->direction());
+  }
 
 };
 
