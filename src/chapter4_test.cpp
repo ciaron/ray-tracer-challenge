@@ -11,21 +11,6 @@
 
 using namespace std;
 
-// BOOST_AUTO_TEST_CASE( translation )
-// {
-//     Point p(-3,4,5);
-//     Transform t;
-//     t.translation(5, -3, 2);
-//     BOOST_TEST((t*p) == Point(2,1,7));
-//
-//     auto tInv = t.inverse();
-//     BOOST_TEST((tInv*p)==Point(-8,7,3));
-//
-//     Vector v(-3,4,5);
-//     BOOST_TEST((tInv*v)==v);
-//
-// }
-
 BOOST_AUTO_TEST_CASE( translation )
 {
     Point p(-3,4,5);
