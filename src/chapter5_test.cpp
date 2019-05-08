@@ -100,8 +100,8 @@ BOOST_AUTO_TEST_CASE ( identifying_hits_1 ) {
     Intersection i2(2, s);
     vector<Intersection> xs {i2, i1};
 
-    Intersection i = hit(xs);
-    BOOST_TEST(i==i1);
+    auto i = hit(xs);
+    BOOST_TEST(*i==i1);
 }
 BOOST_AUTO_TEST_CASE ( identifying_hits_2 ) {
     Sphere s;
@@ -109,8 +109,8 @@ BOOST_AUTO_TEST_CASE ( identifying_hits_2 ) {
     Intersection i2(1, s);
     vector<Intersection> xs {i2, i1};
 
-    Intersection i = hit(xs);
-    BOOST_TEST(i==i2);
+    auto i = hit(xs);
+    BOOST_TEST(*i==i2);
 }
 BOOST_AUTO_TEST_CASE ( identifying_hits_3 ) {
     Sphere s;
@@ -118,8 +118,8 @@ BOOST_AUTO_TEST_CASE ( identifying_hits_3 ) {
     Intersection i2(-1, s);
     vector<Intersection> xs {i2, i1};
 
-    Intersection i = hit(xs);
-    BOOST_TEST(i==i);
+    auto i = hit(xs);
+    BOOST_TEST(*i==*i);
 }
 BOOST_AUTO_TEST_CASE ( identifying_hits_4 ) {
     Sphere s;
@@ -129,8 +129,8 @@ BOOST_AUTO_TEST_CASE ( identifying_hits_4 ) {
     Intersection i4(2, s);
     vector<Intersection> xs {i1, i2, i3, i4};
 
-    Intersection i = hit(xs);
-    BOOST_TEST(i==i4);
+    auto i = hit(xs);
+    BOOST_TEST(*i==i4);
 }
 
 BOOST_AUTO_TEST_CASE (translate_ray) {

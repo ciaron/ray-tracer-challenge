@@ -38,10 +38,10 @@ int main(){
             Ray r(ray_origin, v);
 
             auto xs = r.intersect(shape);
-            cout >> hit(xs);
-            //if(hit(xs)){
-            //    c.setPixel(x,y,cl);
-            //}
+            //cout >> hit(xs);
+            if(hit(xs)){
+                c.setPixel(x,y,cl);
+            }
         }
     }
 

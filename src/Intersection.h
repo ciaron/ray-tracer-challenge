@@ -24,14 +24,17 @@ public:
 };
 
 /* HIT */
-Intersection hit(const vector<Intersection>& xs) {
-    Intersection i(10000);
+std::shared_ptr<Intersection> hit(const vector<Intersection>& xs) {
+
+    if (xs.size() == 0) return nullptr;
+    
+    std::shared_ptr<Intersection> i=std::make_shared<Intersection>(10000);
 
     // find the element of xs with the lowest, non-negative t-value
     // TODO: add <, > operators for Intersections
     for (Intersection x : xs) {
-        if ( (x.t() < i.t()) && x.t() > 0.0 ) {
-            i=x;
+        if ( (x.t() < i->t()) && x.t() > 0.0 ) {
+            *i=x;
         }
     }
     return i;
