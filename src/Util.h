@@ -40,6 +40,12 @@ inline Vector operator*(const float& d, const Vector& v) {
   return v*d;
 }
 
+// return a new normalized vector
+inline Vector normalize(const Vector& v) {
+  Vector v2 = v;
+  v2.normalize();
+  return v2;
+}
 // cannot put this function here, because #include'ing Canvas.h introduces circular includes.
 // inline std::string canvas_to_ppm(Canvas c) {
 //   return "TEST";

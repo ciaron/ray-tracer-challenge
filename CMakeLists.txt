@@ -17,8 +17,8 @@ set(CHAPTER5_SOURCES src/chapter5.cpp src/Tuple.cpp src/Matrix.cpp src/Transform
 set(CHAPTER5_TESTSOURCES src/chapter5_test.cpp src/Tuple.cpp src/Matrix.cpp src/Transform.cpp)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")
 
-set(CHAPTER6_SOURCES src/chapter6.cpp src/Tuple.cpp src/Matrix.cpp)
-set(CHAPTER6_TESTSOURCES src/chapter6_test.cpp src/Tuple.cpp src/Matrix.cpp)
+set(CHAPTER6_SOURCES src/chapter6.cpp src/Tuple.cpp src/Matrix.cpp src/Transform.cpp)
+set(CHAPTER6_TESTSOURCES src/chapter6_test.cpp src/Tuple.cpp src/Matrix.cpp src/Transform.cpp)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")
 
 find_package(Boost)

@@ -14,7 +14,6 @@ public:
     yval /= m;
     zval /= m;
     wval /= m;
-
     //return Vector(xval/m, yval/m, zval/m);//, wval/m);
   }
 
@@ -36,5 +35,6 @@ public:
     return *this;
   }
 };
+
 
 #endif
