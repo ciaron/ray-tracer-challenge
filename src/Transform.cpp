@@ -12,18 +12,11 @@ Matrix& Matrix::translation(float x, float y, float z) {
     transform(2,3) = z;
     this->matrix = this->operator*(transform).matrix;
 
-    // directly setting, translation unaffected by rotation?????
-    //cout << "TRANSLATE" << endl;
-    // this->operator()(0,3) += x;
-    // this->operator()(1,3) += y;
-    // this->operator()(2,3) += z;
-
     return *this;
 }
 
 Matrix& Matrix::scaling(float t, float u, float v) {
 
-  //cout << "SCALE" << endl;
   Matrix transform = identity();
   transform(0,0) = t;
   transform(1,1) = u;
@@ -34,7 +27,6 @@ Matrix& Matrix::scaling(float t, float u, float v) {
 
 Matrix& Matrix::rotation_x(float radians) {
 
-  //cout << "ROTATE_X" << endl;
   float cosr = cos(radians);
   float sinr = sin(radians);
 

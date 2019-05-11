@@ -40,6 +40,7 @@ BOOST_AUTO_TEST_CASE( normal_at )
 BOOST_AUTO_TEST_CASE (transforming_normals) {
   Sphere s;
   s.set_transform(identity().translation(0,1,0));
+  //s.set_transform(translation(0,1,0));
 
   Vector n = s.normal_at(Point(0, 1.70711, -0.70711));
   BOOST_TEST(n==Vector(0, 0.70711, -0.70711));
@@ -47,4 +48,13 @@ BOOST_AUTO_TEST_CASE (transforming_normals) {
   s.set_transform(identity().scaling(1, 0.5, 1).rotation_z(M_PI/5.0));
   Vector n2 = s.normal_at(Point(0, sqrt(2)/2, -sqrt(2)/2));
   BOOST_TEST(n2==Vector(0, 0.97014, -0.24254));
+}
+
+BOOST_AUTO_TEST_CASE(reflecting_vectors) {
+  Vector v(1,-1,0);
+  Vector n(0,1,0);
+
+  Vector r = v.reflect(n);
+  BOOST_TEST(r == Vector(1,1,0));
+
 }

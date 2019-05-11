@@ -2,6 +2,7 @@
 #define VECTOR_H
 
 #include "Tuple.h"
+
 #include <cmath>
 
 class Vector : public Tuple {
@@ -14,7 +15,6 @@ public:
     yval /= m;
     zval /= m;
     wval /= m;
-    //return Vector(xval/m, yval/m, zval/m);//, wval/m);
   }
 
   float magnitude(){
@@ -31,8 +31,20 @@ public:
     yval *= d;
     zval *= d;
     wval *= d;
-    //Vector(this->x()*d,this->y()*d, this->z()*d);
     return *this;
+  }
+
+  Vector operator+(Vector b){
+      return Vector( this->x() + b.x(), this->y() + b.y(), this->z() + b.z());
+  }
+
+  Vector operator-(Vector b){
+      return Vector( this->x() - b.x(), this->y() - b.y(), this->z() - b.z());
+  }
+
+  Vector reflect(const Vector& normal) {
+    Vector v = *this - normal * 2 * this->dot(normal);
+    return v;
   }
 };
 

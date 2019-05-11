@@ -182,6 +182,7 @@ Matrix Matrix::inverse() const {
   return M2;
 }
 
+// non-member
 Matrix identity() {
   return Matrix(4,4,{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1});
 }
@@ -206,5 +207,4 @@ ostream& operator<<(ostream& os, const Matrix& rhs)
 
 Tuple operator*(const Tuple& t, const Matrix& A) {
    return (A*t);
-   //return t;
 }
