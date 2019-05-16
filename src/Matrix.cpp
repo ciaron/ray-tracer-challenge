@@ -45,6 +45,7 @@ float Matrix::operator() (unsigned row, unsigned col) const
 
 bool Matrix::operator== (const Matrix& rhs) const
 {
+    // TODO!! Wrong!!
     return (equal(this->matrix[0], rhs(0,0)));
 }
 

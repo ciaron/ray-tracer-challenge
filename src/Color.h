@@ -8,6 +8,7 @@
 class Color : public Tuple {
 
   public:
+    Color() :Tuple(0.0,0.0,0.0,0.0) {}
     Color(float red, float green, float blue) :Tuple(red, green, blue, 0.0) {}
     float red()   const { return this->x(); }
     float green() const { return this->y(); }

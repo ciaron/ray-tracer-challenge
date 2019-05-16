@@ -3,10 +3,14 @@
 #include "Shape.h"
 #include "Vector.h"
 #include "Util.h"
+#include "Material.h"
 
 class Sphere : public Shape {
 
 public:
+
+    Material material;
+
     Sphere() { }
 
     // Vector normal_at(const Point& p) {
