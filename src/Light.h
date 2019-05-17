@@ -10,8 +10,14 @@ class Pointlight {
   public:
     Point position;
     Color intensity;
+
+    Pointlight() : position{Point(-10,10,-10)},intensity{Color(1,1,1)} {}
     Pointlight(Point p, Color c) : position{p},intensity{c} {}
 
+    bool operator==(const Pointlight& rhs) const {
+        // two lights are equal if they have the same position and colour
+        return (rhs.position == position && rhs.intensity == intensity);
+    }
 };
 
 Color lighting(const Material& m, const Pointlight& light, const Point& position, const Vector& eyev, const Vector& normalv) {
@@ -54,6 +60,16 @@ Color lighting(const Material& m, const Pointlight& light, const Point& position
     }
 
     return ambient + diffuse + specular;//Color(0,0,0);
+}
+
+ostream& operator<<(ostream& os, const Pointlight& rhs)
+{
+    // simply print the matrix dimensions for now. TODO
+    //os << rhs.ROWS << "x" << rhs.COLS;
+    os << endl;
+    os << " pointlight at " << rhs.position;
+    os << endl;
+    return os;
 }
 
 #endif

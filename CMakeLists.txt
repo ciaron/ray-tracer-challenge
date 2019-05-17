@@ -21,6 +21,10 @@ set(CHAPTER6_SOURCES src/chapter6.cpp src/Tuple.cpp src/Matrix.cpp src/Transform
 set(CHAPTER6_TESTSOURCES src/chapter6_test.cpp src/Tuple.cpp src/Matrix.cpp src/Transform.cpp)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")
 
+set(CHAPTER7_SOURCES src/chapter7.cpp src/Tuple.cpp src/Matrix.cpp src/Transform.cpp src/Canvas.cpp)
+set(CHAPTER7_TESTSOURCES src/chapter7_test.cpp src/Tuple.cpp src/Matrix.cpp src/Transform.cpp)
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")
+
 find_package(Boost)
 IF (Boost_FOUND)
 include_directories(${Boost_INCLUDE_DIR})
@@ -49,3 +53,7 @@ target_link_libraries(test_chapter5 boost_unit_test_framework)
 add_executable(chapter6 ${CHAPTER6_SOURCES})
 add_executable(test_chapter6 ${CHAPTER6_TESTSOURCES})
 target_link_libraries(test_chapter6 boost_unit_test_framework)
+
+add_executable(chapter7 ${CHAPTER7_SOURCES})
+add_executable(test_chapter7 ${CHAPTER7_TESTSOURCES})
+target_link_libraries(test_chapter7 boost_unit_test_framework)
