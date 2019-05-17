@@ -5,7 +5,7 @@
 
 class Point : public Tuple {
 public:
-  Point(float x, float y, float z) :Tuple(x,y,z,1.0)
+  Point(double x, double y, double z) :Tuple(x,y,z,1.0)
   {}
 
   // TODO duplicated code

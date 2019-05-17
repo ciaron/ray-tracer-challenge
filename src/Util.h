@@ -7,13 +7,14 @@
 #include "Point.h"
 #include "Vector.h"
 
-#define EPSILON 0.000001
+#define EPSILON 0.00001
 
-inline bool equal(float a, float b) {
-  if (fabs(a-b) < EPSILON)
-    return true;
-  else
-    return false;
+inline bool equal(double a, double b) {
+  return (abs(a-b) < EPSILON);
+  //if (abs(a-b) < EPSILON)
+  //  return true;
+  //else
+  //  return false;
 }
 
 // Add a point and a vector
@@ -36,7 +37,7 @@ inline Vector operator+(const Vector& v1, const Vector& v2){
 
 // scale a vector, reverse order of arguments
 // see https://stackoverflow.com/questions/29492869/multiplication-operator-overloading
-inline Vector operator*(const float& d, const Vector& v) {
+inline Vector operator*(const double& d, const Vector& v) {
   return v*d;
 }
 

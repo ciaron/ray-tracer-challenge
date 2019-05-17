@@ -27,7 +27,7 @@ Color lighting(const Material& m, const Pointlight& light, const Point& position
     // light_dot_normal represents the cosine of the angle between the​
     // light vector and the normal vector. A negative number means the​
     // light is on the other side of the surface.
-    float light_dot_normal = lightv.dot(normalv);
+    double light_dot_normal = lightv.dot(normalv);
 
     Color diffuse(0.0, 0.0, 0.0);
     Color specular(0.0, 0.0, 0.0);
@@ -43,12 +43,12 @@ Color lighting(const Material& m, const Pointlight& light, const Point& position
         // light reflects away from the eye
         //Vector reflectv = (lightv * -1.0).reflect(normalv);
         Vector reflectv = (lightv * -1.0).reflect(normalv);
-        float reflect_dot_eye = reflectv.dot(eyev);
+        double reflect_dot_eye = reflectv.dot(eyev);
 
         if (reflect_dot_eye <= 0.0){
             specular = Color(0.0,0.0,0.0);
         } else {
-            float factor = pow(reflect_dot_eye, m.shininess);
+            double factor = pow(reflect_dot_eye, m.shininess);
             specular = light.intensity * m.specular * factor;
         }
     }

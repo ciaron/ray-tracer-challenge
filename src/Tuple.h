@@ -7,41 +7,41 @@ using namespace std;
 class Tuple {
 
 protected:
-    float xval,yval,zval,wval;
+    double xval,yval,zval,wval;
 
   public:
     //Tuple();
-    Tuple(float x, float y, float z, float w);
+    Tuple(double x, double y, double z, double w);
 
     bool operator ==(const Tuple a) const;
     Tuple operator +(const Tuple a);
     Tuple operator -(); // unary -
     Tuple operator -(const Tuple a);
-    Tuple operator *(const float d);
-    Tuple operator /(const float d);
+    Tuple operator *(const double d);
+    Tuple operator /(const double d);
 
-    float& operator() (unsigned idx);        // Subscript operators often come in pairs
-    float  operator() (unsigned idx) const;  // Subscript operators often come in pairs
+    double& operator() (unsigned idx);        // Subscript operators often come in pairs
+    double  operator() (unsigned idx) const;  // Subscript operators often come in pairs
 
     friend ostream& operator<<(ostream& os, const Tuple& rhs); // friend has access to class internals
 
-    float x() const;
-    float y() const;
-    float z() const;
-    float w() const;
-    float& x();
-    float& y();
-    float& z();
-    float& w();
+    double x() const;
+    double y() const;
+    double z() const;
+    double w() const;
+    double& x();
+    double& y();
+    double& z();
+    double& w();
 
     bool isPoint();
     bool isVector();
 
     bool isEqual(Tuple t);
 
-    //float magnitude();  // done in Vector
+    //double magnitude();  // done in Vector
     //Tuple normalize(); // done in Vector
-    float dot(const Tuple& t) const;
+    double dot(const Tuple& t) const;
     Tuple cross(const Tuple& t) const;
 };
 

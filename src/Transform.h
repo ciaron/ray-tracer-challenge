@@ -17,12 +17,12 @@
 //       0,0,1,0,
 //       0,0,0,1 }} {  };
 //
-//     Transform& translation(float x, float y, float z);
-//     Transform& scaling(float t, float u, float v);
-//     Transform& rotation_x(float radians);
-//     Transform& rotation_y(float radians);
-//     Transform& rotation_z(float radians);
-//     Transform& shearing(float xy, float xz, float yx, float yz, float zx, float zy);
+//     Transform& translation(double x, double y, double z);
+//     Transform& scaling(double t, double u, double v);
+//     Transform& rotation_x(double radians);
+//     Transform& rotation_y(double radians);
+//     Transform& rotation_z(double radians);
+//     Transform& shearing(double xy, double xz, double yx, double yz, double zx, double zy);
 // };
 //
 // #endif

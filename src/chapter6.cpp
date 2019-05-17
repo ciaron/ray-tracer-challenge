@@ -12,6 +12,6 @@ using namespace std;
 int Shape::count=0;
 
 int main(){
-  
+
     return 0;
 }

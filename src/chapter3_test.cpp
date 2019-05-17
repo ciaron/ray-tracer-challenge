@@ -17,7 +17,7 @@ BOOST_AUTO_TEST_CASE( matrix_create )
   constexpr unsigned nrows = 4;
   constexpr unsigned ncols = 4;
 
-  std::initializer_list<float> vals = { 0  ,  2  ,  3  ,  4,
+  std::initializer_list<double> vals = { 0  ,  2  ,  3  ,  4,
                                         5.5,  6.5,  7.5,  8.5,
                                         9  , 10  , 11  , 12,
                                        13.5, 14.5, 15.5, 16.5
@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE( matrix_create )
   BOOST_TEST(m(3,2) == 15.5);
 
   // "old" way of setting values
-  float vals2[4] = { -3, 5, 1, -2 };
+  double vals2[4] = { -3, 5, 1, -2 };
   Matrix m2{2,2};
   m2.set(vals2);
 
@@ -51,7 +51,7 @@ BOOST_AUTO_TEST_CASE( matrix_create )
   BOOST_TEST(m2(1,0) == 1);
   BOOST_TEST(m2(1,1) == -2);
 
-  //float vals3[9] = { -3, 5, 0, 1, -2, -7, 0, 1, 1 };
+  //double vals3[9] = { -3, 5, 0, 1, -2, -7, 0, 1, 1 };
   Matrix m3(3,3,{ -3, 5, 0, 1, -2, -7, 0, 1, 1 });
   //m3.set(vals3);
   BOOST_TEST(m3(0,0) == -3);
@@ -63,21 +63,21 @@ BOOST_AUTO_TEST_CASE( matrix_create )
 
 BOOST_AUTO_TEST_CASE ( matrix_equality ) {
 
-    std::initializer_list<float>  valsA = {
+    std::initializer_list<double>  valsA = {
         1,2,3,4,
         5,6,7,8,
         9,8,7,6,
         5,4,3,2
     };
 
-    std::initializer_list<float> valsB = {
+    std::initializer_list<double> valsB = {
         1,2,3,4,
         5,6,7,8,
         9,8,7,6,
         5,4,3,2
     };
 
-    std::initializer_list<float> valsC = {
+    std::initializer_list<double> valsC = {
         2,3,4,5,
         6,7,8,9,
         8,7,6,5,
@@ -104,21 +104,21 @@ BOOST_AUTO_TEST_CASE ( matrix_equality ) {
 }
 BOOST_AUTO_TEST_CASE ( matrix_multiply ) {
 
-        std::initializer_list<float> valsA = {
+        std::initializer_list<double> valsA = {
             1,2,3,4,
             5,6,7,8,
             9,8,7,6,
             5,4,3,2
         };
 
-        std::initializer_list<float> valsB = {
+        std::initializer_list<double> valsB = {
             -2,1,2,3,
             3,2,1,-1,
             4,3,6,5,
             1,2,7,8
         };
 
-        std::initializer_list<float> valsC = {
+        std::initializer_list<double> valsC = {
             20,22,50,48,
             44,54,114,108,
             40,58,110,102,
@@ -135,16 +135,16 @@ BOOST_AUTO_TEST_CASE ( matrix_multiply ) {
 
 BOOST_AUTO_TEST_CASE ( matrix_tuple_multiply ) {
 
-        std::initializer_list<float> valsA = {
+        std::initializer_list<double> valsA = {
             1,2,3,4,
             2,4,4,2,
             8,6,4,1,
             0,0,0,1
         };
-        std::initializer_list<float> valsB = {
+        std::initializer_list<double> valsB = {
             1,2,3,1
         };
-        std::initializer_list<float> valsC = {
+        std::initializer_list<double> valsC = {
             18,24,33,1
         };
 
@@ -161,13 +161,13 @@ BOOST_AUTO_TEST_CASE ( matrix_tuple_multiply ) {
 }
 
 BOOST_AUTO_TEST_CASE ( identity_matrix ) {
-  std::initializer_list<float> valsA = {
+  std::initializer_list<double> valsA = {
     0,1,2,4,
     1,2,4,8,
     2,4,8,16,
     4,8,16,32
   };
-  std::initializer_list<float> valsI = {
+  std::initializer_list<double> valsI = {
     1,0,0,0,
     0,1,0,0,
     0,0,1,0,
@@ -185,7 +185,7 @@ BOOST_AUTO_TEST_CASE ( identity_matrix ) {
 }
 
 BOOST_AUTO_TEST_CASE(transpose) {
-  std::initializer_list<float> valsT = {
+  std::initializer_list<double> valsT = {
     0,9,1,0,
     9,8,8,0,
     3,0,5,5,
@@ -193,7 +193,7 @@ BOOST_AUTO_TEST_CASE(transpose) {
   };
   Matrix Tr{4,4}; Tr.set(valsT);
 
-  std::initializer_list<float> valsA = {
+  std::initializer_list<double> valsA = {
     0,9,3,0,
     9,8,0,8,
     1,8,5,3,
@@ -207,7 +207,7 @@ BOOST_AUTO_TEST_CASE(transpose) {
   BOOST_TEST(T==Tr);
 
   // tranpose identity matrix
-  std::initializer_list<float> valsI = {
+  std::initializer_list<double> valsI = {
     1,0,0,0,
     0,1,0,0,
     0,0,1,0,
@@ -250,7 +250,7 @@ BOOST_AUTO_TEST_CASE (minor)
 {
   Matrix A(3,3,{3,5,0,2,-1,-7,6,-1,5});
 
-  float m = A.minor(1,0);
+  double m = A.minor(1,0);
   BOOST_TEST(equal(m, 25));
 }
 

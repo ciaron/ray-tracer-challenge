@@ -9,10 +9,10 @@ class Color : public Tuple {
 
   public:
     Color() :Tuple(0.0,0.0,0.0,0.0) {}
-    Color(float red, float green, float blue) :Tuple(red, green, blue, 0.0) {}
-    float red()   const { return this->x(); }
-    float green() const { return this->y(); }
-    float blue()  const { return this->z(); }
+    Color(double red, double green, double blue) :Tuple(red, green, blue, 0.0) {}
+    double red()   const { return this->x(); }
+    double green() const { return this->y(); }
+    double blue()  const { return this->z(); }
 
     // test colors for equality
     bool operator==(const Color& b) const {
@@ -30,7 +30,7 @@ class Color : public Tuple {
     }
 
     // multiply a color by a scalar
-    Color operator*(float s) const {
+    Color operator*(double s) const {
         return Color( this->red() * s, this->green() * s, this->blue() * s );
     }
 

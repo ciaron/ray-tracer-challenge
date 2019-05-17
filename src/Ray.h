@@ -22,14 +22,14 @@ public:
   const Point origin() const { return _origin; }
   const Vector direction() const { return _direction; }
 
-  Point position(float t) {
+  Point position(double t) {
     return (_origin + (_direction * t));
   }
 
   // intersect with a Sphere
   vector<Intersection> intersect(const Sphere& s) const {
 
-    float t1, t2;
+    double t1, t2;
 
     // chapter 5, get transformed ray
     auto tr = this->transform(s.get_transform().inverse());
@@ -38,10 +38,10 @@ public:
     //Vector sphere_to_ray = this->origin() - Point(0,0,0); // 0,0,0 is the centre of the sphere
     Vector sphere_to_ray = tr->origin() - Point(0,0,0); // 0,0,0 is the centre of the sphere
 
-    float a = tr->direction().dot(tr->direction());
-    float b = 2 * tr->direction().dot(sphere_to_ray);
-    float c = sphere_to_ray.dot(sphere_to_ray) - 1.0;
-    float d = b*b - 4*a*c;
+    double a = tr->direction().dot(tr->direction());
+    double b = 2 * tr->direction().dot(sphere_to_ray);
+    double c = sphere_to_ray.dot(sphere_to_ray) - 1.0;
+    double d = b*b - 4*a*c;
 
     vector<Intersection> xs{};
     // get intersection points, if any

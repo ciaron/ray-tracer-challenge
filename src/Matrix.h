@@ -18,19 +18,19 @@ class Matrix {
 
 private:
   unsigned ROWS,COLS;
-  float *matrix;
+  double *matrix;
 
 public:
   Matrix(unsigned rows, unsigned cols);
-  Matrix(unsigned rows, unsigned cols, std::initializer_list<float> data); // constructor including initializer_list
+  Matrix(unsigned rows, unsigned cols, std::initializer_list<double> data); // constructor including initializer_list
   Matrix();
 
-  void set(float *vals);
-  void set(std::initializer_list<float>);
+  void set(double *vals);
+  void set(std::initializer_list<double>);
 
   // see https://isocpp.org/wiki/faq/operator-overloading#matrix-subscript-op
-  float& operator() (unsigned row, unsigned col);        // Subscript operators often come in pairs
-  float  operator() (unsigned row, unsigned col) const;  // Subscript operators often come in pairs
+  double& operator() (unsigned row, unsigned col);        // Subscript operators often come in pairs
+  double  operator() (unsigned row, unsigned col) const;  // Subscript operators often come in pairs
 
   friend ostream& operator<<(ostream& os, const Matrix& rhs); // friend has access to class internals
 
@@ -49,10 +49,10 @@ public:
 
 
   Matrix transpose() const;
-  float determinant() const;
+  double determinant() const;
   Matrix submatrix(unsigned row, unsigned col) const; // return a matrix with given row and column removed
-  float minor(unsigned row, unsigned col) const;
-  float cofactor(unsigned row, unsigned col) const;
+  double minor(unsigned row, unsigned col) const;
+  double cofactor(unsigned row, unsigned col) const;
   bool isInvertible() const;
   Matrix inverse() const;
 
@@ -61,12 +61,12 @@ public:
 
   //Matrix identity();
   // transformation matrices
-  Matrix& translation(float x, float y, float z);
-  Matrix& scaling(float t, float u, float v);
-  Matrix& rotation_x(float radians);
-  Matrix& rotation_y(float radians);
-  Matrix& rotation_z(float radians);
-  Matrix& shearing(float xy, float xz, float yx, float yz, float zx, float zy);
+  Matrix& translation(double x, double y, double z);
+  Matrix& scaling(double t, double u, double v);
+  Matrix& rotation_x(double radians);
+  Matrix& rotation_y(double radians);
+  Matrix& rotation_z(double radians);
+  Matrix& shearing(double xy, double xz, double yx, double yz, double zx, double zy);
 
 };
 

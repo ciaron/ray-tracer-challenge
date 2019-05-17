@@ -5,11 +5,11 @@
 using namespace std;
 
 Matrix::Matrix(unsigned rows, unsigned cols) : ROWS{rows}, COLS{cols} {
-    matrix = new float[rows * cols];
+    matrix = new double[rows * cols];
 }
 
-Matrix::Matrix(unsigned rows, unsigned cols, std::initializer_list<float> data)
- : ROWS{rows}, COLS{cols}, matrix{new float[rows*cols]}
+Matrix::Matrix(unsigned rows, unsigned cols, std::initializer_list<double> data)
+ : ROWS{rows}, COLS{cols}, matrix{new double[rows*cols]}
 {
     copy(data.begin(), data.end(), matrix);
 }
@@ -18,11 +18,11 @@ Matrix::Matrix(unsigned rows, unsigned cols, std::initializer_list<float> data)
 Matrix::Matrix()
 { }
 
-void Matrix::set(float *vals) {
+void Matrix::set(double *vals) {
     matrix = vals;
 }
 
-void Matrix::set(std::initializer_list<float> vals){
+void Matrix::set(std::initializer_list<double> vals){
   std::copy(vals.begin(), vals.end(), matrix);
 }
 
@@ -32,13 +32,13 @@ unsigned Matrix::cols() const { return COLS; }
 // below: body of inline functions needs to be in the header
 // so we make these non-inline here.
 //inline
-float& Matrix::operator() (unsigned row, unsigned col)
+double& Matrix::operator() (unsigned row, unsigned col)
 {
     return matrix[COLS*row + col];
 }
 
 //inline
-float Matrix::operator() (unsigned row, unsigned col) const
+double Matrix::operator() (unsigned row, unsigned col) const
 {
   return matrix[COLS*row + col];
 }
@@ -112,15 +112,15 @@ Matrix Matrix::transpose() const {
 
   for (unsigned row=0; row<this->rows(); ++row) {
     for (unsigned col=0; col<this->cols(); ++col) {
-      float v = matrix[row*COLS + col];
+      double v = matrix[row*COLS + col];
       T(col, row) = v;
     }
   }
   return T;
 }
 
-float Matrix::determinant() const {
-  float det=0.0;
+double Matrix::determinant() const {
+  double det=0.0;
 
   // 2x2 only (ad-bc)
   if (this->ROWS==2 && this->COLS==2) {
@@ -148,13 +148,13 @@ Matrix Matrix::submatrix(unsigned delrow, unsigned delcol) const{
   return S;
 }
 
-float Matrix::minor(unsigned row, unsigned col) const {
+double Matrix::minor(unsigned row, unsigned col) const {
   Matrix m = this->submatrix(row, col);
   return m.determinant();
 }
 
-float Matrix::cofactor(unsigned row, unsigned col) const {
-  float m=minor(row, col);
+double Matrix::cofactor(unsigned row, unsigned col) const {
+  double m=minor(row, col);
   if ((row+col) % 2 == 0) {
     return m;
   } else {
@@ -168,14 +168,14 @@ bool Matrix::isInvertible() const {
 
 Matrix Matrix::inverse() const {
   Matrix M2{this->ROWS, this->COLS};
-  float dm = this->determinant();
+  double dm = this->determinant();
 
   if (!this->isInvertible()) {
     return Matrix{0,0};
   } else {
     for (unsigned row=0; row<this->ROWS; ++row) {
       for (unsigned col=0; col<this->COLS; ++col) {
-        float c = this->cofactor(row, col);
+        double c = this->cofactor(row, col);
         M2(col,row) = c/dm;
       }
     }

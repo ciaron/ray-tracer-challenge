@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Tuple::Tuple(float x, float y, float z, float w)
+Tuple::Tuple(double x, double y, double z, double w)
     :xval{x}, yval {y}, zval{z}, wval{w}
 {
 }
@@ -27,16 +27,16 @@ Tuple Tuple::operator-(Tuple b){
     return Tuple( this->x() - b.x(), this->y() - b.y(), this->z() - b.z(), this->w() - b.w() );
 }
 
-Tuple Tuple::operator *(const float d){
+Tuple Tuple::operator *(const double d){
     return Tuple(this->x()*d, this->y()*d, this->z()*d, this->w()*d);
 }
 
-Tuple Tuple::operator /(const float d) {
+Tuple Tuple::operator /(const double d) {
     return Tuple(this->x()/d, this->y()/d, this->z()/d, this->w()/d);
 }
 
 // operator() lets us access Tuple elements by index number
-float& Tuple::operator() (unsigned idx)
+double& Tuple::operator() (unsigned idx)
 {
   switch (idx) {
     case 0:
@@ -56,7 +56,7 @@ float& Tuple::operator() (unsigned idx)
   }
 }
 
-float Tuple::operator() (unsigned idx) const
+double Tuple::operator() (unsigned idx) const
 {
   switch (idx) {
     case 0:
@@ -76,15 +76,15 @@ float Tuple::operator() (unsigned idx) const
 }
 
 // const guarantees the function doesn't change anything.
-float Tuple::x() const { return xval; }
-float Tuple::y() const { return yval; }
-float Tuple::z() const { return zval; }
-float Tuple::w() const { return wval; }
+double Tuple::x() const { return xval; }
+double Tuple::y() const { return yval; }
+double Tuple::z() const { return zval; }
+double Tuple::w() const { return wval; }
 
-float& Tuple::x() { return xval; }
-float& Tuple::y() { return yval; }
-float& Tuple::z() { return zval; }
-float& Tuple::w() { return wval; }
+double& Tuple::x() { return xval; }
+double& Tuple::y() { return yval; }
+double& Tuple::z() { return zval; }
+double& Tuple::w() { return wval; }
 
 bool Tuple::isPoint() {
     return (equal(wval, 1.0)) ? true : false;
@@ -99,17 +99,17 @@ bool Tuple::isEqual(Tuple t) {
 }
 
 // done in Vector
-// float Tuple::magnitude(){
+// double Tuple::magnitude(){
 //     return sqrt(xval*xval + yval*yval + zval*zval + wval*wval);
 // }
 
 // done in Vector now
 // Tuple Tuple::normalize(){
-//     float m = this->magnitude();
+//     double m = this->magnitude();
 //     return Tuple(xval/m, yval/m, zval/m, wval/m);
 // }
 
-float Tuple::dot(const Tuple& a) const {
+double Tuple::dot(const Tuple& a) const {
     return this->x() * a.x() +
            this->y() * a.y() +
            this->z() * a.z() +

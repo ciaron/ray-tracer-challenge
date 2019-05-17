@@ -6,13 +6,13 @@
 
 // return rotation matrix for a given hour
 Matrix rot(int hour) {
-  float h_rads = M_PI/6; // radians for one hour
+  double h_rads = M_PI/6; // radians for one hour
   return identity().rotation_y(hour * h_rads);
 }
 
 int main(){
 
-  float radius = 3*1000/8.0;
+  double radius = 3*1000/8.0;
   Canvas c(1000, 1000);
   Color cl(1, 0.8, 0.6);
 

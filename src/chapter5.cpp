@@ -13,11 +13,11 @@ int Shape::count=0;
 
 int main(){
     Point ray_origin(0,0,-5);
-    float wall_z = 10.0;
-    float wall_size = 7.0;
+    double wall_z = 10.0;
+    double wall_size = 7.0;
     int canvas_pixels = 100;
-    float pixel_size = wall_size/canvas_pixels;
-    float half = wall_size/2.0;  // describes minimum and maximum x and y coordinates of the wall
+    double pixel_size = wall_size/canvas_pixels;
+    double half = wall_size/2.0;  // describes minimum and maximum x and y coordinates of the wall
 
     Canvas c(canvas_pixels, canvas_pixels);
     Color cl(1, 0.0, 0.0); // red
@@ -39,11 +39,11 @@ int main(){
 
     for (int y=0; y<canvas_pixels; ++y) {
         // compute the world y coordinate (top = +half, bottom = -half)
-        float world_y = half-pixel_size * y;
+        double world_y = half-pixel_size * y;
 
         for (int x=0; x<canvas_pixels; ++x) {
             // compute the world x coordinate (left = -half, right = +half)
-            float world_x = -half + pixel_size * x;
+            double world_x = -half + pixel_size * x;
 
             // describe the point on the wall that the ray will target
             Point position = Point(world_x, world_y, wall_z);

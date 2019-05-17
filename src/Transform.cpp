@@ -4,7 +4,7 @@
 using namespace std;
 #include <cmath>
 
-Matrix& Matrix::translation(float x, float y, float z) {
+Matrix& Matrix::translation(double x, double y, double z) {
 
     Matrix transform=identity();
     transform(0,3) = x;
@@ -15,7 +15,7 @@ Matrix& Matrix::translation(float x, float y, float z) {
     return *this;
 }
 
-Matrix& Matrix::scaling(float t, float u, float v) {
+Matrix& Matrix::scaling(double t, double u, double v) {
 
   Matrix transform = identity();
   transform(0,0) = t;
@@ -25,10 +25,10 @@ Matrix& Matrix::scaling(float t, float u, float v) {
   return *this;
 }
 
-Matrix& Matrix::rotation_x(float radians) {
+Matrix& Matrix::rotation_x(double radians) {
 
-  float cosr = cos(radians);
-  float sinr = sin(radians);
+  double cosr = cos(radians);
+  double sinr = sin(radians);
 
   Matrix transform = identity();
 
@@ -40,9 +40,9 @@ Matrix& Matrix::rotation_x(float radians) {
   return *this;
 }
 
-Matrix& Matrix::rotation_y(float radians) {
-  float cosr = cos(radians);
-  float sinr = sin(radians);
+Matrix& Matrix::rotation_y(double radians) {
+  double cosr = cos(radians);
+  double sinr = sin(radians);
 
   Matrix transform = identity();
 
@@ -54,9 +54,9 @@ Matrix& Matrix::rotation_y(float radians) {
   return *this;
 }
 
-Matrix& Matrix::rotation_z(float radians) {
-  float cosr = cos(radians);
-  float sinr = sin(radians);
+Matrix& Matrix::rotation_z(double radians) {
+  double cosr = cos(radians);
+  double sinr = sin(radians);
 
   Matrix transform = identity();
 
@@ -68,7 +68,7 @@ Matrix& Matrix::rotation_z(float radians) {
   return *this;
 }
 
-Matrix& Matrix::shearing(float xy, float xz, float yx, float yz, float zx, float zy) {
+Matrix& Matrix::shearing(double xy, double xz, double yx, double yz, double zx, double zy) {
 
   Matrix transform = identity();
 

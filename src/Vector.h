@@ -7,26 +7,26 @@
 
 class Vector : public Tuple {
 public:
-  Vector(float x, float y, float z) :Tuple(x,y,z,0.0) {}
+  Vector(double x, double y, double z) :Tuple(x,y,z,0.0) {}
 
   void normalize() {
-    float m = this->magnitude();
+    double m = this->magnitude();
     xval /= m;
     yval /= m;
     zval /= m;
     wval /= m;
   }
 
-  float magnitude(){
+  double magnitude(){
     return sqrt(xval*xval + yval*yval + zval*zval + wval*wval);
   }
 
   // scale a vector
-  Vector operator*(const float d) const {
+  Vector operator*(const double d) const {
     return Vector(this->x()*d,this->y()*d, this->z()*d);
   }
 
-  Vector operator*=(const float d) {
+  Vector operator*=(const double d) {
     xval *= d;
     yval *= d;
     zval *= d;

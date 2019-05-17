@@ -30,7 +30,7 @@ BOOST_AUTO_TEST_CASE( normal_at )
   auto n3 = s.normal_at(Point(0,0,1));
   BOOST_TEST(n3==Vector(0,0,1));
 
-  float p = sqrt(3.0)/3.0;
+  double p = sqrt(3.0)/3.0;
   auto n4 = s.normal_at(Point(p,p,p));
   BOOST_TEST(n4==Vector(p,p,p));
 
