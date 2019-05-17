@@ -7,7 +7,7 @@
 #include "Point.h"
 #include "Vector.h"
 
-#define EPSILON 0.00001
+#define EPSILON 0.000001
 
 inline bool equal(float a, float b) {
   if (fabs(a-b) < EPSILON)

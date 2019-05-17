@@ -42,6 +42,11 @@ public:
       return Vector( this->x() - b.x(), this->y() - b.y(), this->z() - b.z());
   }
 
+  // unary -ve
+  Vector operator-(){
+      return Vector( -this->x(), -this->y(), -this->z());
+  }
+
   Vector reflect(const Vector& normal) {
     Vector v = *this - normal * 2 * this->dot(normal);
     return v;

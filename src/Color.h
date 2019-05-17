@@ -30,12 +30,12 @@ class Color : public Tuple {
     }
 
     // multiply a color by a scalar
-    Color operator*(float s){
+    Color operator*(float s) const {
         return Color( this->red() * s, this->green() * s, this->blue() * s );
     }
 
     // multiply two colors (Hadamard product)
-    Color operator*(Color c){
+    Color operator*(Color c) const {
         return Color( this->red() * c.red(), this->green() * c.green(), this->blue() * c.blue() );
     }
 };
