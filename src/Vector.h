@@ -43,7 +43,7 @@ public:
   }
 
   // unary -ve
-  Vector operator-(){
+  Vector operator-() const {
       return Vector( -this->x(), -this->y(), -this->z());
   }
 
