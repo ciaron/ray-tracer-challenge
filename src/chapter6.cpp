@@ -21,21 +21,21 @@ int main(){
     double half = wall_size/2.0;  // describes minimum and maximum x and y coordinates of the wall
 
     Canvas c(canvas_pixels, canvas_pixels);
-    Color cl(1, 0.0, 0.0); // red
+    Color cl(1, 1.0, 1.0); // red
     Sphere shape;
     Material m;
-    m.color = Color(1, 1, 0.2);
+    m.color = Color(0, 0, 1);
 
     // play with material properties
-    m.ambient = 0.45;
-    m.diffuse = 0.5;
-    m.specular = 0.1;
-    m.shininess = 10.0;
+    // m.ambient = 0.45;
+    // m.diffuse = 0.5;
+    // m.specular = 0.1;
+    // m.shininess = 10.0;
 
     shape.material = m;
 
     Point light_position = Point(10, 10, -10);
-    Color light_color = Color(1, 0.2, 0);
+    Color light_color = Color(1, 1.0, 1.0);
     Pointlight light(light_position, light_color);
 
     // shrink sphere on y axis.
