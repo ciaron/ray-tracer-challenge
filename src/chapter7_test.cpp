@@ -18,7 +18,7 @@ using namespace std;
 
 int Shape::count=0;
 
-BOOST_AUTO_TEST_CASE( world1 ) {
+BOOST_AUTO_TEST_CASE( world ) {
     // ignore first test case in book - we'll just make default worlds
 
     Pointlight light(Point(-10, 10, -10), Color(1,1,1));
@@ -36,6 +36,19 @@ BOOST_AUTO_TEST_CASE( world1 ) {
     World w;
 
     BOOST_TEST(w.light() == light);
-    //BOOST_TEST(w.find(s1));
-    //BOOST_TEST(w.find(s2));
+    BOOST_TEST(w.contains(s1));
+    BOOST_TEST(w.contains(s2));
+}
+BOOST_AUTO_TEST_CASE(intersect_world) {
+  World w;
+  Ray r(Point(0,0,-5), Vector(0,0,1));
+
+  // find all the intersection in our world with a given ray.
+  vector <Intersection> xs = w.intersect(r); // returns sorted
+
+  BOOST_TEST(xs.size() == 4);
+  BOOST_TEST(xs[0].t() == 4);
+  BOOST_TEST(xs[1].t() == 4.5);
+  BOOST_TEST(xs[2].t() == 5.5);
+  BOOST_TEST(xs[3].t() == 6);
 }

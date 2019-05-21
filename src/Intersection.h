@@ -40,6 +40,12 @@ std::shared_ptr<Intersection> hit(const vector<Intersection>& xs) {
     return i;
 }
 
+// Comparator for Intersections
+bool compareIntersection(Intersection i1, Intersection i2)
+{
+    return (i1.t() < i2.t());
+}
+
 ostream& operator<<(ostream& os, const Intersection& rhs)
 {
     // simply print the matrix dimensions for now. TODO

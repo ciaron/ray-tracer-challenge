@@ -5,8 +5,11 @@
 #include "Material.h"
 #include "Point.h"
 #include "Light.h"
+#include "Ray.h"
+#include "Intersection.h"
 
 #include <iostream>
+#include <algorithm>    // std::sort
 
 using namespace std;
 
@@ -38,6 +41,46 @@ public:
     Pointlight light() {
         return _light;
     }
+
+    bool contains(const Sphere& other) {
+      // world contains the sphere if tranforms and materials match. Centre and radius always match.
+      bool FOUND=false;
+      for (Sphere s : _spheres) {
+        if (s.material==other.material  &&
+            s.get_transform() == other.get_transform()
+
+        ) FOUND=true;
+      }
+      return FOUND;
+
+      // IDs won't work:
+      // bool FOUND = false;
+      // for (Sphere s : _spheres) {
+      //   cout << "checking self " << s.id() << " against other: " << other.id() << endl;
+      //   if (s.id() == other.id()) FOUND=true;
+      // }
+      // return FOUND;
+    }
+
+    vector<Intersection> intersect(const Ray& ray) {
+      // loop over all objects in the scene (spheres for now)
+      //vector<Intersection> xs1 = r1.intersect(s);
+
+      vector<Intersection> all_xs;
+      for (Sphere s : _spheres) {
+        vector<Intersection> xs = ray.intersect(s);
+        if (xs.size()) {
+          for (auto x : xs){
+            all_xs.push_back(x);
+          }
+        }
+      }
+
+      //sort all_xs before returning
+      sort(all_xs.begin(), all_xs.end(), compareIntersection);
+      return all_xs;
+    }
+
 
 };
 

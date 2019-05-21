@@ -29,4 +29,13 @@ public:
     }
 };
 
+ostream& operator<<(ostream& os, const Sphere& rhs)
+{
+    // simply print the matrix dimensions for now. TODO
+    //os << rhs.ROWS << "x" << rhs.COLS;
+    os << endl;
+    os << rhs.id() << " ";
+    os << endl;
+    return os;
+}
 #endif
