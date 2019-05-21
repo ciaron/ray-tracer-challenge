@@ -68,3 +68,58 @@ BOOST_AUTO_TEST_CASE (_prepare_computations) {
   BOOST_TEST(comps.eyev == Vector(0,0,-1));
   BOOST_TEST(comps.normalv == Vector(0,0,-1));
 }
+
+BOOST_AUTO_TEST_CASE (inside_outside){
+  Ray r(Point(0,0,-5), Vector(0,0,1));
+  Sphere shape;
+  Intersection i{4.0, shape};
+  auto comps = prepare_computations(i, r);
+  BOOST_TEST(comps.inside == false);
+
+  r = Ray(Point(0,0,0), Vector(0,0,1));
+  i = Intersection(1, shape);
+  comps = prepare_computations(i, r);
+  BOOST_TEST(comps.point == Point(0,0,1));
+  BOOST_TEST(comps.eyev == Vector(0,0,-1));
+  BOOST_TEST(comps.normalv == Vector(0,0,-1));
+  BOOST_TEST(comps.inside == true);
+}
+
+BOOST_AUTO_TEST_CASE (shade_tests) {
+  World w;
+  Ray r(Point(0,0,-5), Vector(0,0,1));
+
+  Sphere s1 = w.spheres()[0];
+  auto i = Intersection(4.0, s1);
+  auto comps = prepare_computations(i, r);
+  auto c = shade_hit(w, comps);
+  BOOST_TEST(Color(0.38066, 0.47583, 0.2855) == c);
+}
+
+BOOST_AUTO_TEST_CASE(color_at_tests) {
+  World w;
+  Ray r(Point(0,0,-5), Vector(0,1,0));
+
+  // The colour when a ray misses
+  Color c = color_at(w, r);
+  BOOST_TEST(c == Color(0,0,0));
+
+  // the colour when a ray hits
+  r = Ray(Point(0,0,-5), Vector(0,0,1));
+  c = color_at(w, r);
+  BOOST_TEST(c == Color(0.38066, 0.47583, 0.2855));
+
+  // the colour with an intersection behind the ray
+
+  // outer
+  w.spheres()[0].material.ambient = 1.0;
+
+  // inner
+  w.spheres()[1].material.ambient = 1.0;
+
+  r = Ray(Point(0,0,0.75), Vector(0,0,-1));
+  c = color_at(w, r);
+  //cout << inner.material.color << endl; // 1 1 1
+  BOOST_TEST(c == w.spheres()[1].material.color);
+
+}

@@ -38,6 +38,10 @@ public:
         _spheres.push_back(s2);
     }
 
+    vector<Sphere> spheres() {
+      return _spheres;
+    }
+
     Pointlight light() {
         return _light;
     }
@@ -54,7 +58,7 @@ public:
       return FOUND;
     }
 
-    vector<Intersection> intersect(const Ray& ray) {
+    vector<Intersection> intersect(const Ray& ray) const {
       // loop over all objects in the scene (spheres for now)
       //vector<Intersection> xs1 = r1.intersect(s);
 

@@ -35,6 +35,11 @@ Color lighting(const Material& m, const Pointlight& light, const Point& position
     // light is on the other side of the surface.
     double light_dot_normal = lightv.dot(normalv);
 
+    // debugging
+    // cout << "lightv" << lightv << endl;
+    // cout << "normalv" << normalv << endl;
+    // cout << "light_dot_normal" << light_dot_normal << endl;
+
     Color diffuse(0.0, 0.0, 0.0);
     Color specular(0.0, 0.0, 0.0);
 

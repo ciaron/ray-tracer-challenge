@@ -9,7 +9,7 @@ class Sphere : public Shape {
 
 public:
     Material material;
-    
+
     Sphere() { }
 
     Vector normal_at(const Point& world_point) {
@@ -19,6 +19,11 @@ public:
       world_normal.w() = 0;
 
       return normalize(world_normal);
+    }
+
+
+    bool operator==(Sphere rhs) const {
+     return (rhs.id() == this->id());
     }
 };
 

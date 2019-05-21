@@ -2,24 +2,30 @@
 #define INTERSECTION_H
 #include "Sphere.h"
 
-// An intersection encapsulates an intersection "point" (distance along ray) and the object it intersects with
+/*
+SPHERE intersections
+
+An intersection encapsulates an intersection "point"
+(distance along ray) and the object it intersects with.
+
+*/
 
 class Intersection {
 
 private:
     double _t;
-    Shape _object;
+    Sphere _object;
 
 public:
     Intersection() : _t{0.0}, _object{Sphere()} { }
     Intersection(const double t) : _t{t}, _object{Sphere()} { }
-    Intersection(const double t, const Shape s) : _t{t}, _object{s} {    }
+    Intersection(const double t, const Sphere s) : _t{t}, _object{s} {    }
 
     bool operator==(const Intersection b) const {
         return (equal(_t, b.t()) && b.object().id()==_object.id() );
     }
 
-    Shape object() const { return _object; }
+    Sphere object() const { return _object; }
     double t() const { return _t; }
 };
 
@@ -49,7 +55,7 @@ bool compareIntersection(Intersection i1, Intersection i2)
 ostream& operator<<(ostream& os, const Intersection& rhs)
 {
     // simply print the matrix dimensions for now. TODO
-    os << "Shape ID: " << rhs.object().id() << " ";
+    os << "Sphere ID: " << rhs.object().id() << " ";
     return os;
 }
 

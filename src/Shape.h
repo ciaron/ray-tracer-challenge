@@ -21,6 +21,8 @@ public:
 
     int id() const { return _id; }
 
+    virtual Vector normal_at(const Point& world_point) =0; // pure virtual
+
     Matrix get_transform() const {
         return _transform;
     }
@@ -29,15 +31,15 @@ public:
         _transform = m;
     }
 
-    bool operator==(Shape rhs) const {
-      return (rhs.id() == _id);
-    }
+    // bool operator==(Shape rhs) const {
+    //   return (rhs.id() == _id);
+    // }
 
 };
 
-ostream& operator<<(ostream& os, const Shape& rhs) {
-    os << "Shape: " << rhs.id() << " ";
-    return os;
-}
+// ostream& operator<<(ostream& os, const Shape& rhs) {
+//     os << "Shape: " << rhs.id() << " ";
+//     return os;
+// }
 
 #endif
