@@ -22,7 +22,7 @@ public:
   const Point origin() const { return _origin; }
   const Vector direction() const { return _direction; }
 
-  Point position(double t) {
+  Point position(double t) const {
     return (_origin + (_direction * t));
   }
 

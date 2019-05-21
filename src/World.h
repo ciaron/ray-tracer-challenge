@@ -52,14 +52,6 @@ public:
         ) FOUND=true;
       }
       return FOUND;
-
-      // IDs won't work:
-      // bool FOUND = false;
-      // for (Sphere s : _spheres) {
-      //   cout << "checking self " << s.id() << " against other: " << other.id() << endl;
-      //   if (s.id() == other.id()) FOUND=true;
-      // }
-      // return FOUND;
     }
 
     vector<Intersection> intersect(const Ray& ray) {
@@ -80,18 +72,6 @@ public:
       sort(all_xs.begin(), all_xs.end(), compareIntersection);
       return all_xs;
     }
-
-
 };
-
-// ostream& operator<<(ostream& os, const World& rhs)
-// {
-//     // simply print the matrix dimensions for now. TODO
-//     //os << rhs.ROWS << "x" << rhs.COLS;
-//     os << endl;
-//     os << rhs.ambient << " ";
-//     os << endl;
-//     return os;
-// }
 
 #endif

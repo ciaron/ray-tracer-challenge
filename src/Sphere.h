@@ -8,16 +8,9 @@
 class Sphere : public Shape {
 
 public:
-
     Material material;
-
+    
     Sphere() { }
-
-    // Vector normal_at(const Point& p) {
-    //   Vector v = (p - Point(0,0,0));
-    //   v.normalize();
-    //   return v;
-    // }
 
     Vector normal_at(const Point& world_point) {
       Point object_point = (this->get_transform().inverse()) * world_point;

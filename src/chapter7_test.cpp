@@ -13,6 +13,7 @@
 #include "Light.h"
 #include "Material.h"
 #include "World.h"
+#include "Computations.h"
 
 using namespace std;
 
@@ -39,6 +40,7 @@ BOOST_AUTO_TEST_CASE( world ) {
     BOOST_TEST(w.contains(s1));
     BOOST_TEST(w.contains(s2));
 }
+
 BOOST_AUTO_TEST_CASE(intersect_world) {
   World w;
   Ray r(Point(0,0,-5), Vector(0,0,1));
@@ -51,4 +53,18 @@ BOOST_AUTO_TEST_CASE(intersect_world) {
   BOOST_TEST(xs[1].t() == 4.5);
   BOOST_TEST(xs[2].t() == 5.5);
   BOOST_TEST(xs[3].t() == 6);
+
+}
+
+BOOST_AUTO_TEST_CASE (_prepare_computations) {
+  Ray r(Point(0,0,-5), Vector(0,0,1));
+  Sphere shape;
+  Intersection i{4.0, shape};
+  Computations comps = prepare_computations(i, r);
+
+  BOOST_TEST(comps.t == i.t());
+  BOOST_TEST(comps.object == i.object());
+  BOOST_TEST(comps.point == Point(0,0,-1));
+  BOOST_TEST(comps.eyev == Vector(0,0,-1));
+  BOOST_TEST(comps.normalv == Vector(0,0,-1));
 }
