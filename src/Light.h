@@ -28,7 +28,7 @@ Color lighting(const Material& m, const Pointlight& light, const Point& position
     Vector lightv = normalize(light.position - position);
 
     // compute the ambient contribution
-    Color ambient = effective_color * m.ambient;
+    Color ambient = effective_color * m.getAmbient();
 
     // light_dot_normal represents the cosine of the angle between the​
     // light vector and the normal vector. A negative number means the​

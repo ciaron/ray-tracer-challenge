@@ -42,11 +42,16 @@ public:
       return _spheres;
     }
 
-    Pointlight light() {
+    Sphere* getSphere(int i) {
+        auto& s = _spheres[i];
+        return &s;
+    }
+
+    Pointlight light() const {
         return _light;
     }
 
-    bool contains(const Sphere& other) {
+    bool contains(const Sphere& other) const {
       // world contains the sphere if tranforms and materials match. Centre and radius always match.
       bool FOUND=false;
       for (Sphere s : _spheres) {

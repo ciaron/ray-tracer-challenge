@@ -112,10 +112,21 @@ BOOST_AUTO_TEST_CASE(color_at_tests) {
   // the colour with an intersection behind the ray
 
   // outer
-  w.spheres()[0].material.ambient = 1.0;
+  auto ps0 = w.getSphere(0);
+  //w.spheres()[0].material.setAmbient(1.0);
+  ps0->updateMaterial(1.0);
+
+  auto ps1 = w.getSphere(1);
 
   // inner
-  w.spheres()[1].material.ambient = 1.0;
+  //cout << "TEST AMBIENT BEFORE " << w.spheres()[1].material.getAmbient() << " at " << &w.spheres()[1].material << endl;
+  //cout << "TEST AMBIENT BEFORE " << (*ps1).material.getAmbient() << endl;
+  //w.spheres()[1].material.setAmbient(1.0);
+  //w.spheres()[1].updateMaterial(1.0);
+  ps1->updateMaterial(1.0);
+  //cout << "TEST AMBIENT  AFTER " << w.spheres()[1].material.getAmbient() << " at " << &w.spheres()[1].material << endl;
+  //cout << "TEST AMBIENT  AFTER " << (*ps1).material.getAmbient() << endl;
+  //cout << w.spheres()[1].material.ambient << endl;
 
   r = Ray(Point(0,0,0.75), Vector(0,0,-1));
   c = color_at(w, r);

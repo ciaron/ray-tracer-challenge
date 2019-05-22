@@ -21,9 +21,15 @@ public:
       return normalize(world_normal);
     }
 
-
     bool operator==(Sphere rhs) const {
      return (rhs.id() == this->id());
+    }
+
+    void updateMaterial(double ambient) {
+        //cout << "Sphere AMBIENT BEFORE " << material.getAmbient() << endl;
+
+        material.setAmbient(ambient);
+        //cout << "Sphere AMBIENT after " << material.getAmbient() << endl;
     }
 };
 
