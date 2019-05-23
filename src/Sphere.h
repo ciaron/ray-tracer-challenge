@@ -26,10 +26,11 @@ public:
     }
 
     void updateMaterial(double ambient) {
-        //cout << "Sphere AMBIENT BEFORE " << material.getAmbient() << endl;
+        //cout << "Sphere AMBIENT BEFORE " << material.ambient << endl;
 
-        material.setAmbient(ambient);
-        //cout << "Sphere AMBIENT after " << material.getAmbient() << endl;
+        //material.ambient(ambient);
+        material.ambient = ambient;
+        //cout << "Sphere AMBIENT after " << material.ambient << endl;
     }
 };
 

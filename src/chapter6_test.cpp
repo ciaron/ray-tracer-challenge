@@ -72,9 +72,9 @@ BOOST_AUTO_TEST_CASE ( light_setup ) {
 
     Material m1;
     BOOST_TEST(m1.color == Color(1,1,1));
-    BOOST_TEST(equal(m1.getAmbient()  , 0.1));
-    BOOST_TEST(equal(m1.diffuse  , 0.9));
-    BOOST_TEST(equal(m1.specular , 0.9));
+    BOOST_TEST(equal(m1.ambient,     0.1));
+    BOOST_TEST(equal(m1.diffuse,     0.9));
+    BOOST_TEST(equal(m1.specular,    0.9));
     BOOST_TEST(equal(m1.shininess, 200.0));
 
     // a sphere has a default Material
@@ -85,7 +85,8 @@ BOOST_AUTO_TEST_CASE ( light_setup ) {
     // a sphere may be assiged a material
     Sphere s;
     Material m2;
-    m2.setAmbient(1.0);
+    //m2.ambient(1.0);
+    m2.ambient = 1.0;
     s.material = m2;
     BOOST_TEST(s.material == m2);
 }
