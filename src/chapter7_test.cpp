@@ -3,6 +3,7 @@
 #define _USE_MATH_DEFINES
 
 #include <boost/test/unit_test.hpp>
+#include <cmath>
 #include "Util.h"
 #include "Color.h"
 #include "Ray.h"
@@ -15,6 +16,7 @@
 #include "Material.h"
 #include "World.h"
 #include "Computations.h"
+#include "Camera.h"
 
 using namespace std;
 
@@ -172,8 +174,21 @@ BOOST_AUTO_TEST_CASE ( view_transformation_tests ) {
                     0.00000, 0.00000,  0.00000,  1.00000
     });
 
-    cout << m;
-
     BOOST_TEST(t == m);
+}
+
+BOOST_AUTO_TEST_CASE (camera_test) {
+
+    // Constructing a camera
+    int hsize{160};
+    int vsize{120};
+    double field_of_view = M_PI/2;
+
+    Camera c(hsize, vsize, field_of_view);
+
+    BOOST_TEST(c.hsize == 160);
+    BOOST_TEST(c.vsize == 120);
+    BOOST_TEST(equal(c.field_of_view, M_PI/2));
+    BOOST_TEST(c.transform == identity());
 
 }
