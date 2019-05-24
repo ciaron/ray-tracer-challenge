@@ -305,8 +305,6 @@ Matrix view_transform(const Point& from, const Point& to, const Vector& up) {
 // https://docs.microsoft.com/en-us/cpp/standard-library/overloading-the-output-operator-for-your-own-classes?view=vs-2019
 ostream& operator<<(ostream& os, const Matrix& rhs)
 {
-    // simply print the matrix dimensions for now. TODO
-    //os << rhs.ROWS << "x" << rhs.COLS;
     os << endl;
     for (unsigned row=0; row<rhs.ROWS; ++row) {
       for (unsigned col=0; col<rhs.COLS; ++col) {

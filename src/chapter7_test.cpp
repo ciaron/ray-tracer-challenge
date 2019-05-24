@@ -172,6 +172,8 @@ BOOST_AUTO_TEST_CASE ( view_transformation_tests ) {
                     0.00000, 0.00000,  0.00000,  1.00000
     });
 
+    cout << m;
+
     BOOST_TEST(t == m);
 
 }
