@@ -1,6 +1,7 @@
 #include "Tuple.h"
 #include "Matrix.h"
 #include "Util.h"
+#include <cmath>
 
 using namespace std;
 
@@ -183,9 +184,120 @@ Matrix Matrix::inverse() const {
   return M2;
 }
 
-// non-member
+/****************
+
+   TRANSFORMS (WAS Transform.cpp)
+
+*****************/
+
+Matrix& Matrix::translation(double x, double y, double z) {
+
+    Matrix transform=identity();
+    transform(0,3) = x;
+    transform(1,3) = y;
+    transform(2,3) = z;
+    this->matrix = this->operator*(transform).matrix;
+
+    return *this;
+}
+
+Matrix& Matrix::scaling(double t, double u, double v) {
+
+  Matrix transform = identity();
+  transform(0,0) = t;
+  transform(1,1) = u;
+  transform(2,2) = v;
+  this->matrix = this->operator*(transform).matrix;
+  return *this;
+}
+
+Matrix& Matrix::rotation_x(double radians) {
+
+  double cosr = cos(radians);
+  double sinr = sin(radians);
+
+  Matrix transform = identity();
+
+  transform(1,1) = cosr;
+  transform(1,2) = -sinr;
+  transform(2,1) = sinr;
+  transform(2,2) = cosr;
+  this->matrix = this->operator*(transform).matrix;
+  return *this;
+}
+
+Matrix& Matrix::rotation_y(double radians) {
+  double cosr = cos(radians);
+  double sinr = sin(radians);
+
+  Matrix transform = identity();
+
+  transform(0,0) = cosr;
+  transform(0,2) = sinr;
+  transform(2,0) = -sinr;
+  transform(2,2) = cosr;
+  this->matrix = this->operator*(transform).matrix;
+  return *this;
+}
+
+Matrix& Matrix::rotation_z(double radians) {
+  double cosr = cos(radians);
+  double sinr = sin(radians);
+
+  Matrix transform = identity();
+
+  transform(0,0) = cosr;
+  transform(0,1) = -sinr;
+  transform(1,0) = sinr;
+  transform(1,1) = cosr;
+  this->matrix = this->operator*(transform).matrix;
+  return *this;
+}
+
+Matrix& Matrix::shearing(double xy, double xz, double yx, double yz, double zx, double zy) {
+
+  Matrix transform = identity();
+
+  transform(0,1) = xy;
+  transform(0,2) = xz;
+  transform(1,0) = yx;
+  transform(1,2) = yz;
+  transform(2,0) = zx;
+  transform(2,1) = zy;
+  this->matrix = this->operator*(transform).matrix;
+  return *this;
+}
+
+/****************
+
+   NON-MEMBERS
+
+*****************/
+
 Matrix identity() {
   return Matrix(4,4,{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1});
+}
+
+// chapter 7, view transformations
+Matrix view_transform(const Point& from, const Point& to, const Vector& up) {
+
+    Vector forward = normalize(to - from);
+
+    auto left = forward.cross(normalize(up));
+    auto true_up = left.cross(forward);
+
+    Matrix orientation(4,4,
+    {
+         left.x(),     left.y(),     left.z(),    0.0,
+         true_up.x(),  true_up.y(),  true_up.z(), 0.0,
+        -forward.x(), -forward.y(), -forward.z(), 0.0,
+         0.0,          0.0,          0.0,         1.0
+    }
+
+    );
+
+    return orientation.translation(-from.x(), -from.y(), -from.z());
+    //return orientation.translation(1,2,3);
 }
 
 // this must be declared outside the class. See

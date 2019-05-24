@@ -75,4 +75,7 @@ Tuple operator*(const Tuple& t, const Matrix& A);
 
 Matrix identity();
 
+// chapter 7, view transformations
+Matrix view_transform(const Point& from, const Point& to, const Vector& up);
+
 #endif

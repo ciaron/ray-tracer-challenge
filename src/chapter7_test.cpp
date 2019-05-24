@@ -8,6 +8,7 @@
 #include "Ray.h"
 #include "Point.h"
 #include "Vector.h"
+#include "Matrix.h"
 #include "Sphere.h"
 #include "Intersection.h"
 #include "Light.h"
@@ -132,5 +133,45 @@ BOOST_AUTO_TEST_CASE(color_at_tests) {
   c = color_at(w, r);
   //cout << inner.material.color << endl; // 1 1 1
   BOOST_TEST(c == w.spheres()[1].material.color);
+}
+
+BOOST_AUTO_TEST_CASE ( view_transformation_tests ) {
+
+    // the transformation matrix for the default orientation
+    Point from(0,0,0);
+    Point to(0,0,-1);
+    Vector up(0,1,0);
+    auto t = view_transform(from, to, up);
+
+    BOOST_TEST( t == identity());
+
+    // A view transformation looking in the positive z-direction
+    from = Point(0,0,0);
+    to = Point(0,0,1);
+    up = Vector(0,1,0);
+    t = view_transform(from, to, up);
+    BOOST_TEST( t == identity().scaling(-1, 1, -1));
+
+    // a view transformation moves the worlds
+    from = Point(0,0,8);
+    to = Point(0,0,0);
+    up = Vector(0,1,0);
+    t = view_transform(from, to, up);
+
+    BOOST_TEST( t == identity().translation(0, 0, -8));
+
+    // an arbitrary view transformation
+    from = Point(1,3,2);
+    to = Point(4,-2,8);
+    up = Vector(1,1,0);
+    t = view_transform(from, to, up);
+
+    Matrix m(4,4,{ -0.50709, 0.50709,  0.67612, -2.36643,
+                    0.76772, 0.60609,  0.12122, -2.82843,
+                   -0.35857, 0.59761, -0.71714,  0.00000,
+                    0.00000, 0.00000,  0.00000,  1.00000
+    });
+
+    BOOST_TEST(t == m);
 
 }

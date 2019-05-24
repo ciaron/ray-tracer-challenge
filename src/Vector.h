@@ -18,7 +18,7 @@ public:
     wval /= m;
   }
 
-  double magnitude(){
+  double magnitude() const {
     return sqrt(xval*xval + yval*yval + zval*zval + wval*wval);
   }
 
@@ -35,11 +35,11 @@ public:
     return *this;
   }
 
-  Vector operator+(Vector b){
+  Vector operator+(const Vector& b) const {
       return Vector( this->x() + b.x(), this->y() + b.y(), this->z() + b.z());
   }
 
-  Vector operator-(Vector b){
+  Vector operator-(const Vector& b) const {
       return Vector( this->x() - b.x(), this->y() - b.y(), this->z() - b.z());
   }
 
@@ -48,7 +48,7 @@ public:
       return Vector( -this->x(), -this->y(), -this->z());
   }
 
-  Vector reflect(const Vector& normal) {
+  Vector reflect(const Vector& normal) const {
     Vector v = *this - normal * 2 * this->dot(normal);
     return v;
   }
