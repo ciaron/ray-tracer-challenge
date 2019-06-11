@@ -18,19 +18,19 @@ inline bool equal(double a, double b) {
 }
 
 // Add a point and a vector
-inline Point operator+(const Point& p, const Vector& v){
+inline Point operator+(const Point& p, const Vector& v) {
   Point p2{ p.x() + v.x(), p.y() + v.y(), p.z() + v.z() };
   return p2;
 }
 
 // subtract two points to get a vector between them
-inline Vector operator-(const Point& p1, const Point& p2){
+inline Vector operator-(const Point& p1, const Point& p2) {
   Vector v{ p1.x() - p2.x(), p1.y() - p2.y(), p1.z() - p2.z() };
   return v;
 }
 
 // Add a vector and a vector
-inline Vector operator+(const Vector& v1, const Vector& v2){
+inline Vector operator+(Vector& v1, Vector& v2) {
   Vector v3{ v1.x() + v2.x(), v1.y() + v2.y(), v1.z() + v2.z() };
   return v3;
 }

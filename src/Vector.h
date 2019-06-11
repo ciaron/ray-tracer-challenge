@@ -35,9 +35,9 @@ public:
     return *this;
   }
 
-  //Vector operator+(const Vector& b) const {
-  //    return Vector( this->x() + b.x(), this->y() + b.y(), this->z() + b.z());
-  //}
+  Vector operator+(const Vector& b) const {
+      return Vector( this->x() + b.x(), this->y() + b.y(), this->z() + b.z());
+  }
 
   Vector operator-(const Vector& b) const {
       return Vector( this->x() - b.x(), this->y() - b.y(), this->z() - b.z());
