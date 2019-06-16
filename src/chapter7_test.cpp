@@ -6,7 +6,7 @@
 #include <cmath>
 #include "Util.h"
 #include "Color.h"
-#include "Ray.h"
+//#include "Ray.h"
 #include "Point.h"
 #include "Vector.h"
 #include "Matrix.h"
@@ -191,4 +191,25 @@ BOOST_AUTO_TEST_CASE (camera_test) {
     BOOST_TEST(equal(c.field_of_view, M_PI/2));
     BOOST_TEST(c.transform == identity());
 
+    Camera c2(125, 200, field_of_view);
+
+    BOOST_TEST(equal(c2.pixel_size, 0.01));
+
+}
+
+BOOST_AUTO_TEST_CASE (ray_for_pixel_test) {
+  Camera c(201, 101, M_PI/2);
+
+  Ray r = ray_for_pixel(c, 100, 50);
+  BOOST_TEST(r.origin() == Point(0,0,0));
+  BOOST_TEST(r.direction() == Vector(0,0,-1));
+
+  r = ray_for_pixel(c, 0, 0);
+  BOOST_TEST(r.origin() == Point(0,0,0));
+  BOOST_TEST(r.direction() == Vector(0.66519, 0.33259, -0.66851));
+
+  c.transform = identity().rotation_y(M_PI/4).translation(0, -2, 5);
+  r = ray_for_pixel(c, 100, 50);
+  BOOST_TEST(r.origin() == Point(0,2,-5));
+  BOOST_TEST(r.direction() == Vector(sqrt(2)/2, 0, -sqrt(2)/2));
 }
