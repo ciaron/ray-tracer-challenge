@@ -6,7 +6,6 @@
 
 #include "Point.h"
 #include "Vector.h"
-
 #define EPSILON 0.00001
 
 inline bool equal(double a, double b) {
@@ -51,7 +50,5 @@ inline Vector normalize(const Vector& v) {
 // inline std::string canvas_to_ppm(Canvas c) {
 //   return "TEST";
 // }
-
-
 
 #endif
