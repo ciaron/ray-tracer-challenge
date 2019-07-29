@@ -177,7 +177,7 @@ BOOST_AUTO_TEST_CASE ( view_transformation_tests ) {
     BOOST_TEST(t == m);
 }
 
-BOOST_AUTO_TEST_CASE (camera_test) {
+BOOST_AUTO_TEST_CASE (camera_test1) {
 
     // Constructing a camera
     int hsize{160};
@@ -191,4 +191,9 @@ BOOST_AUTO_TEST_CASE (camera_test) {
     BOOST_TEST(equal(c.field_of_view, M_PI/2));
     BOOST_TEST(c.transform == identity());
 
+}
+
+BOOST_AUTO_TEST_CASE (camera_test2) {
+    Camera c(200, 125, M_PI/2);
+    c = Camera(125, 200, M_PI/2);
 }
